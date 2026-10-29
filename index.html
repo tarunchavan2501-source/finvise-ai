@@ -1,13 +1,1717 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FinVise AI — Personal Finance Advisor | Made for India</title>
+  <title>FinVise AI â€” Personal Finance Advisor | Made for India</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+/* ===================================================================
+   FinVise AI â€” Modern Indian Personal Finance Assistant Design System
+   Exact match to screenshot styling with warm cream & forest green palette
+   =================================================================== */
+
+:root {
+  --bg-sand: #fbf7ee;
+  --bg-sand-light: #fefcf8;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f5efe3;
+  --bg-dark-green: #0d3824;
+  --text-dark: #1e2621;
+  --text-muted: #5e6862;
+  --text-light: #f2f7f4;
+  --brand-green: #116843;
+  --brand-green-light: #188757;
+  --brand-orange: #d96b27;
+  --brand-orange-light: #e88243;
+  --brand-gold: #c29543;
+  --accent-gold-bg: #fceed2;
+  --border-subtle: #e6ded0;
+  --border-green: #1f4a35;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --shadow-sm: 0 2px 8px rgba(13, 56, 36, 0.05);
+  --shadow-md: 0 8px 24px rgba(13, 56, 36, 0.08);
+  --shadow-lg: 0 16px 36px rgba(13, 56, 36, 0.12);
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-sand);
+  color: var(--text-dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================================================================
+   Navbar
+   =================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(251, 247, 238, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 24px;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #116843, #0a462c);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 10px rgba(17, 104, 67, 0.3);
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #123d27;
+  letter-spacing: -0.02em;
+}
+
+.highlight-ai {
+  color: var(--brand-orange);
+}
+
+.brand-tagline {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.88rem;
+  padding: 9px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background-color: var(--brand-orange);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(217, 107, 39, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-orange-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(217, 107, 39, 0.35);
+}
+
+.btn-outline {
+  background-color: var(--bg-card);
+  border-color: var(--border-subtle);
+  color: var(--text-dark);
+}
+
+.btn-outline:hover {
+  background-color: #f1ebd8;
+  border-color: #cfc5b2;
+}
+
+.badge-status {
+  background-color: #e5f5ec;
+  color: #0b6837;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* ===================================================================
+   Hero Section (Dark Green Gradient Card)
+   =================================================================== */
+.hero-section {
+  padding: 24px 20px;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-grid {
+  background: radial-gradient(circle at 80% 20%, #154c33 0%, #0c3621 100%);
+  border-radius: var(--radius-xl);
+  color: var(--text-light);
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 40px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.pill-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 9999px;
+}
+
+.pill-muted {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e0eee7;
+}
+
+.pill-live {
+  background: #ff5e36;
+  color: #ffffff;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.hero-title .rupee-text {
+  color: #f7a950;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cadbd1;
+  max-width: 580px;
+  margin-bottom: 36px;
+}
+
+.hero-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.stat-pill {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-number {
+  font-family: var(--font-sans);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.stat-desc {
+  font-size: 0.76rem;
+  color: #a3c2b2;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* Hero Visual Mockup */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-mockup {
+  width: 260px;
+  background: #ffffff;
+  border-radius: 36px;
+  border: 6px solid #234b37;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  color: var(--text-dark);
+}
+
+.phone-notch {
+  width: 90px;
+  height: 16px;
+  background: #173826;
+  margin: 0 auto;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.phone-screen {
+  padding: 16px 14px 20px;
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.phone-avatar {
+  width: 34px;
+  height: 34px;
+  background: #f1ebd8;
+  color: #116843;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.phone-user {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #153825;
+}
+
+.phone-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.phone-card {
+  background: #fbf7ee;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.phone-card-title {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.phone-card-amt {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #105938;
+  margin: 3px 0 6px;
+}
+
+.phone-meter {
+  height: 6px;
+  background: #e1d8c4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background: #116843;
+}
+
+.phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phone-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  padding: 6px 8px;
+  background: #faf6ed;
+  border-radius: 8px;
+}
+
+.exp-cost { color: #c0392b; font-weight: 600; }
+.sav-cost { color: #1e8449; font-weight: 600; }
+
+.floating-badge {
+  position: absolute;
+  background: #ffffff;
+  color: var(--text-dark);
+  padding: 10px 16px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.floating-badge.badge-saved {
+  top: 15%;
+  left: 20px;
+}
+
+.floating-badge.badge-rate {
+  bottom: 15%;
+  right: 20px;
+}
+
+.badge-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.badge-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #116843;
+}
+
+/* ===================================================================
+   Trust Features Row
+   =================================================================== */
+.trust-features {
+  padding: 0 20px 24px;
+}
+
+.features-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.feature-icon {
+  font-size: 1.6rem;
+  background: var(--bg-sand);
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.feature-text h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.feature-text p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ===================================================================
+   Who It's For: Persona Profiles
+   =================================================================== */
+.profiles-section {
+  padding: 30px 20px;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--brand-orange);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.section-header-flex {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-heading {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #153223;
+}
+
+.sub-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.profile-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+  border-color: #a8d5be;
+  box-shadow: var(--shadow-md);
+}
+
+.profile-card.active {
+  border-color: var(--brand-green);
+  background: #f7fbf8;
+  box-shadow: 0 0 0 2px rgba(17, 104, 67, 0.15);
+}
+
+.profile-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.profile-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.profile-emoji {
+  font-size: 1.6rem;
+}
+
+.profile-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #133a27;
+}
+
+.profile-type {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.profile-salary {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #116843;
+}
+
+.profile-salary small {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.profile-desc {
+  font-size: 0.84rem;
+  color: #49544c;
+  line-height: 1.45;
+}
+
+/* ===================================================================
+   Live Sandbox Advisor Section
+   =================================================================== */
+.advisor-section {
+  padding: 30px 20px 40px;
+}
+
+.advisor-panel {
+  background: #0d3824;
+  border-radius: var(--radius-xl);
+  color: #fff;
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.advisor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.live-pill {
+  background: #198754;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  display: inline-block;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.advisor-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.advisor-subtitle {
+  font-size: 0.88rem;
+  color: #a7c5b6;
+}
+
+.quick-profile-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-profile-selector label {
+  font-size: 0.82rem;
+  color: #c0ded0;
+}
+
+.form-select {
+  background-color: #174b33;
+  color: #ffffff;
+  border: 1px solid #2f694e;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.advisor-body {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 32px;
+}
+
+/* Inputs Column */
+.inputs-col {
+  background: #ffffff;
+  color: var(--text-dark);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+}
+
+.box-heading {
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.sub-section-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #2b3a31;
+  margin: 16px 0 10px;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3b4740;
+  margin-bottom: 5px;
+}
+
+.rupee-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.rupee-input input {
+  width: 100%;
+  padding: 10px 12px 10px 30px;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  background: #fdfdfc;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.rupee-input input:focus {
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px rgba(17, 104, 67, 0.1);
+}
+
+.formatted-hint {
+  font-size: 0.72rem;
+  color: #63776b;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+.expenses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.investment-pref-group .form-select {
+  width: 100%;
+  background-color: #f7f9f7;
+  color: #173826;
+  border-color: var(--border-subtle);
+}
+
+.btn-action-generate {
+  width: 100%;
+  margin-top: 18px;
+  background: var(--brand-orange);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(217, 107, 39, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-action-generate:hover {
+  background: var(--brand-orange-light);
+  transform: translateY(-1px);
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ffffff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Dashboard Column (Right) */
+.dashboard-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.kpi-cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.kpi-card {
+  background: #ffffff;
+  color: var(--text-dark);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.kpi-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.kpi-value {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin: 4px 0 2px;
+}
+
+.card-income .kpi-value { color: #174b33; }
+.card-spend .kpi-value { color: #d0422c; }
+.card-savings .kpi-value { color: #12824c; }
+
+.kpi-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Chart Box */
+.chart-container-box {
+  background: #ffffff;
+  color: var(--text-dark);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.chart-title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #173826;
+}
+
+.chart-tag {
+  background: #eaf6ef;
+  color: #137746;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.chart-wrapper {
+  height: 190px;
+  position: relative;
+}
+
+/* Quick Advisor Box */
+.advisor-quick-box {
+  background: #fdf6e6;
+  color: #3b3017;
+  border: 1px solid #ecd8ab;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+}
+
+.quick-title {
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quick-insights-list {
+  list-style: none;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+.quick-insights-list li {
+  margin-bottom: 4px;
+}
+
+/* 50-30-20 Rule Check */
+.budget-rule-box {
+  background: #ffffff;
+  color: var(--text-dark);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.budget-rule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.health-pill {
+  background: #e5f6ed;
+  color: #0b753c;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.74rem;
+}
+
+.rule-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rule-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.rule-bar-bg {
+  height: 8px;
+  background: #ede8dc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rule-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.fill-needs { background: #d96b27; }
+.fill-wants { background: #2f855a; }
+.fill-savings { background: #116843; }
+
+/* ===================================================================
+   Detailed AI Output Cards Section
+   =================================================================== */
+.results-section {
+  padding: 20px 20px 40px;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.results-action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.result-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-card.full-width {
+  grid-column: 1 / -1;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.card-icon {
+  font-size: 1.35rem;
+}
+
+.card-head h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #173b28;
+}
+
+.card-body {
+  font-size: 0.88rem;
+  color: #38453d;
+  line-height: 1.6;
+}
+
+.placeholder-text {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ai-recommendation-item {
+  margin-bottom: 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--brand-green);
+}
+
+.ai-recommendation-item strong {
+  color: #123e28;
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ===================================================================
+   Unique Feature: Simulator Section
+   =================================================================== */
+.simulator-section {
+  padding: 20px 20px 40px;
+}
+
+.simulator-box {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.simulator-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.sim-controls .form-group {
+  margin-bottom: 18px;
+}
+
+.sim-controls input[type=range] {
+  width: 100%;
+  accent-color: var(--brand-green);
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.slider-val {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-green);
+  margin-top: 4px;
+}
+
+.period-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.period-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #fdfaf3;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.period-btn.active, .period-btn:hover {
+  background: var(--brand-green);
+  color: #fff;
+  border-color: var(--brand-green);
+}
+
+.sim-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.sim-kpi {
+  background: #faf6ee;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.sim-kpi.highlight {
+  background: #eaf5ee;
+  border-color: #a0d4b4;
+}
+
+.sim-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  display: block;
+}
+
+.sim-amount {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: 4px;
+  display: block;
+}
+
+.text-success { color: #157945; }
+.sim-kpi.highlight .sim-amount { color: #0f5834; font-size: 1.45rem; }
+
+.sim-note {
+  background: #fbf1dc;
+  border: 1px solid #e7cd9a;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  color: #4a3a1b;
+  line-height: 1.5;
+}
+
+/* ===================================================================
+   Under The Hood Flow Diagram
+   =================================================================== */
+.architecture-section {
+  padding: 20px 20px 40px;
+}
+
+.workflow-diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.flow-box {
+  background: #f5f0e4;
+  border: 1.5px solid #dfd5c2;
+  border-radius: 14px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 140px;
+}
+
+.flow-box.primary {
+  background: #eaf3ed;
+  border-color: #a8cfb6;
+}
+
+.flow-box.accent {
+  background: #faede6;
+  border-color: #f1baa3;
+}
+
+.flow-box strong {
+  display: block;
+  font-size: 1rem;
+  color: #173826;
+}
+
+.flow-box small {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.flow-arrow {
+  font-size: 0.82rem;
+  color: #8c7f6b;
+  font-weight: 600;
+}
+
+.flow-outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.output-pill {
+  background: #ffffff;
+  border: 1.5px solid var(--border-subtle);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #173826;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+/* ===================================================================
+   System Requirements & Tabs
+   =================================================================== */
+.specs-section {
+  padding: 20px 20px 60px;
+}
+
+.specs-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background: #116843;
+  color: #ffffff;
+  border-color: #116843;
+}
+
+.tab-content {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.req-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.req-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.req-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #183e29;
+}
+
+.steps-list {
+  padding-left: 20px;
+  line-height: 1.8;
+  font-size: 0.92rem;
+}
+
+.scenarios-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.sc-item {
+  background: #faf6ed;
+  border: 1px solid var(--border-subtle);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.sc-item strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #116843;
+  margin-bottom: 4px;
+}
+
+.sc-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================================
+   Modal Windows
+   =================================================================== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(13, 56, 36, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-card {
+  background: #ffffff;
+  max-width: 580px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 18px 24px;
+  background: #fbf7ee;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #114c30;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.modal-intro {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+}
+
+/* Saved Snapshots list in Modal */
+.saved-snapshot-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  background: #faf6ee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saved-snapshot-card:last-child {
+  margin-bottom: 0;
+}
+
+.snapshot-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #116843;
+}
+
+.snapshot-info small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+/* ===================================================================
+   Footer
+   =================================================================== */
+.footer {
+  background: #f1ebd8;
+  border-top: 1px solid var(--border-subtle);
+  padding: 24px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-copy {
+  font-weight: 600;
+  color: #133c26;
+  margin-bottom: 6px;
+}
+
+.footer-disclaimer {
+  font-size: 0.74rem;
+  color: #79837c;
+}
+
+/* ===================================================================
+   Responsive Media Queries
+   =================================================================== */
+/* ===================================================================
+   Mobile & Responsive Enhancements (Phones, Tablets & Laptops)
+   =================================================================== */
+
+/* Sticky Quick Actions Bar on Phones */
+.mobile-action-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-subtle);
+  padding: 10px 16px;
+  z-index: 95;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.08);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-stats-brief {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-stats-brief strong {
+  font-size: 0.95rem;
+  color: #116843;
+}
+
+.mobile-stats-brief small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.mobile-btn-quick {
+  background: var(--brand-orange);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding: 36px 28px;
+  }
+  .hero-visual {
+    margin-top: 10px;
+  }
+  .advisor-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+  .sim-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .req-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 60px; /* Space for mobile sticky action bar */
+  }
+
+  .mobile-action-bar {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .nav-actions .try-tool-btn {
+    display: none; /* Hide duplicate in mobile header to save space */
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  .hero-section {
+    padding: 14px 12px;
+  }
+
+  .hero-grid {
+    padding: 24px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .phone-mockup {
+    width: 230px;
+  }
+
+  .floating-badge {
+    padding: 6px 12px;
+  }
+  .badge-val {
+    font-size: 0.95rem;
+  }
+
+  .features-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .profiles-section {
+    padding: 20px 14px;
+  }
+
+  .section-heading {
+    font-size: 1.4rem;
+  }
+
+  .section-header-flex {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .advisor-panel {
+    padding: 20px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .advisor-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .quick-profile-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .quick-profile-selector .form-select {
+    width: 60%;
+  }
+
+  .inputs-col {
+    padding: 18px 14px;
+  }
+
+  .expenses-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .kpi-cards-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .sim-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .results-action-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .results-action-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .specs-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .req-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scenarios-list {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-diagram {
+    padding: 20px 16px;
+    flex-direction: column;
+  }
+
+  .flow-arrow {
+    transform: rotate(90deg);
+    margin: 8px 0;
+  }
+}
+
+
+</style>
   <!-- Chart.js and jsPDF -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -18,18 +1722,18 @@
   <header class="navbar">
     <div class="nav-container">
       <div class="brand">
-        <div class="brand-icon">₹</div>
+        <div class="brand-icon">â‚¹</div>
         <div class="brand-text">
           <span class="brand-name">FinVise <span class="highlight-ai">AI</span></span>
-          <span class="brand-tagline">AI Personal Finance Advisor • Made for India</span>
+          <span class="brand-tagline">AI Personal Finance Advisor â€¢ Made for India</span>
         </div>
       </div>
       <div class="nav-actions">
         <button class="btn btn-outline" id="btn-api-modal" title="Configure Gemini API Key">
-          <span class="key-icon">🔑</span> Gemini Key <span class="badge-status" id="api-status-badge">Default</span>
+          <span class="key-icon">ðŸ”‘</span> Gemini Key <span class="badge-status" id="api-status-badge">Default</span>
         </button>
         <button class="btn btn-outline" id="btn-open-history">
-          <span>📜</span> History & Compare
+          <span>ðŸ“œ</span> History & Compare
         </button>
         <a href="#advisor-section" class="btn btn-primary try-tool-btn">Try the tool</a>
       </div>
@@ -45,13 +1749,13 @@
             <div class="pill-group">
               <span class="pill pill-muted">Finance</span>
               <span class="pill pill-muted">Individual & Family</span>
-              <span class="pill pill-live">● Live</span>
+              <span class="pill pill-live">â— Live</span>
             </div>
             <h1 class="hero-title">
               Take charge of every <span class="rupee-text">rupee</span>, with an AI advisor in your pocket.
             </h1>
             <p class="hero-subtitle">
-              Record your monthly income, log daily and weekly expenses by category, and get a personalised budget plan, saving suggestions and a monthly report — powered by Gemini AI.
+              Record your monthly income, log daily and weekly expenses by category, and get a personalised budget plan, saving suggestions and a monthly report â€” powered by Gemini AI.
             </p>
             
             <div class="hero-stats-row">
@@ -64,7 +1768,7 @@
                 <span class="stat-desc">Ready-made life profiles</span>
               </div>
               <div class="stat-pill">
-                <span class="stat-number">₹</span>
+                <span class="stat-number">â‚¹</span>
                 <span class="stat-desc">Lakh-style number format</span>
               </div>
               <div class="stat-pill">
@@ -77,7 +1781,7 @@
           <div class="hero-visual">
             <div class="floating-badge badge-saved">
               <span class="badge-label">SAVED THIS MONTH</span>
-              <span class="badge-val">+₹23,000</span>
+              <span class="badge-val">+â‚¹23,000</span>
             </div>
             
             <div class="phone-mockup">
@@ -92,21 +1796,21 @@
                 </div>
                 <div class="phone-card">
                   <span class="phone-card-title">Balance Available</span>
-                  <div class="phone-card-amt">₹1,14,080</div>
+                  <div class="phone-card-amt">â‚¹1,14,080</div>
                   <div class="phone-meter"><div class="meter-fill" style="width: 72%"></div></div>
                 </div>
                 <div class="phone-list">
                   <div class="phone-item">
                     <span>Swiggy & Zomato</span>
-                    <span class="exp-cost">-₹1,420</span>
+                    <span class="exp-cost">-â‚¹1,420</span>
                   </div>
                   <div class="phone-item">
                     <span>SIP Index Fund</span>
-                    <span class="sav-cost">+₹10,000</span>
+                    <span class="sav-cost">+â‚¹10,000</span>
                   </div>
                   <div class="phone-item">
                     <span>House Rent EMI</span>
-                    <span class="exp-cost">-₹25,000</span>
+                    <span class="exp-cost">-â‚¹25,000</span>
                   </div>
                 </div>
               </div>
@@ -125,21 +1829,21 @@
     <section class="trust-features">
       <div class="features-container">
         <div class="feature-card">
-          <div class="feature-icon">🔒</div>
+          <div class="feature-icon">ðŸ”’</div>
           <div class="feature-text">
             <h3>Private by design</h3>
-            <p>Your numbers stay on your device — no login, no data sharing.</p>
+            <p>Your numbers stay on your device â€” no login, no data sharing.</p>
           </div>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🇮🇳</div>
+          <div class="feature-icon">ðŸ‡®ðŸ‡³</div>
           <div class="feature-text">
             <h3>Built for India</h3>
             <p>Rupees, lakhs, UPI habits, SIPs, PPF and FDs baked into advice.</p>
           </div>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">⚡</div>
+          <div class="feature-icon">âš¡</div>
           <div class="feature-text">
             <h3>Instant AI plans</h3>
             <p>A personalised budget and saving plan in seconds.</p>
@@ -162,13 +1866,13 @@
           <div class="profile-card active" data-profile="salaried">
             <div class="profile-top">
               <div class="profile-meta">
-                <span class="profile-emoji">💼</span>
+                <span class="profile-emoji">ðŸ’¼</span>
                 <div>
                   <h4 class="profile-name">Salaried Professional</h4>
-                  <span class="profile-type">Regular income • Fixed + variable costs</span>
+                  <span class="profile-type">Regular income â€¢ Fixed + variable costs</span>
                 </div>
               </div>
-              <span class="profile-salary">₹85,000<small>/mo</small></span>
+              <span class="profile-salary">â‚¹85,000<small>/mo</small></span>
             </div>
             <p class="profile-desc">
               Logs a monthly salary and daily UPI spends across rent, food, travel and outings. FinVise AI spots overspending and builds a plan with SIP and emergency-fund suggestions.
@@ -179,16 +1883,16 @@
           <div class="profile-card" data-profile="student">
             <div class="profile-top">
               <div class="profile-meta">
-                <span class="profile-emoji">🎓</span>
+                <span class="profile-emoji">ðŸŽ“</span>
                 <div>
                   <h4 class="profile-name">College Student</h4>
-                  <span class="profile-type">Pocket money • Tight control</span>
+                  <span class="profile-type">Pocket money â€¢ Tight control</span>
                 </div>
               </div>
-              <span class="profile-salary">₹15,000<small>/mo</small></span>
+              <span class="profile-salary">â‚¹15,000<small>/mo</small></span>
             </div>
             <p class="profile-desc">
-              Manages a limited monthly allowance across hostel, mess, recharge and weekends. Gets realistic limits and nudges to cut unnecessary spends and start a small ₹500 SIP.
+              Manages a limited monthly allowance across hostel, mess, recharge and weekends. Gets realistic limits and nudges to cut unnecessary spends and start a small â‚¹500 SIP.
             </p>
           </div>
 
@@ -196,13 +1900,13 @@
           <div class="profile-card" data-profile="freelancer">
             <div class="profile-top">
               <div class="profile-meta">
-                <span class="profile-emoji">💻</span>
+                <span class="profile-emoji">ðŸ’»</span>
                 <div>
                   <h4 class="profile-name">Freelancer</h4>
-                  <span class="profile-type">Variable income • Tax planning</span>
+                  <span class="profile-type">Variable income â€¢ Tax planning</span>
                 </div>
               </div>
-              <span class="profile-salary">₹60,000<small>/mo</small></span>
+              <span class="profile-salary">â‚¹60,000<small>/mo</small></span>
             </div>
             <p class="profile-desc">
               Earns from multiple clients with uneven months. FinVise AI adapts the budget to income swings and prioritises a 6-month emergency buffer and advance tax reserve.
@@ -213,13 +1917,13 @@
           <div class="profile-card" data-profile="household">
             <div class="profile-top">
               <div class="profile-meta">
-                <span class="profile-emoji">🏡</span>
+                <span class="profile-emoji">ðŸ¡</span>
                 <div>
                   <h4 class="profile-name">Household Manager</h4>
-                  <span class="profile-type">Family budget • Shared goals</span>
+                  <span class="profile-type">Family budget â€¢ Shared goals</span>
                 </div>
               </div>
-              <span class="profile-salary">₹1,20,000<small>/mo</small></span>
+              <span class="profile-salary">â‚¹1,20,000<small>/mo</small></span>
             </div>
             <p class="profile-desc">
               Tracks combined family income across groceries, school fees, utilities and healthcare, with a consolidated monthly report and family savings goals like gold and children's education.
@@ -259,10 +1963,10 @@
               <div class="form-group">
                 <label for="incomeInput">Monthly income (take-home)</label>
                 <div class="rupee-input">
-                  <span class="currency-symbol">₹</span>
+                  <span class="currency-symbol">â‚¹</span>
                   <input type="number" id="incomeInput" value="85000" min="0" step="500" placeholder="e.g. 85000">
                 </div>
-                <div class="formatted-hint" id="incomeHint">₹85,000 (Eighty Five Thousand)</div>
+                <div class="formatted-hint" id="incomeHint">â‚¹85,000 (Eighty Five Thousand)</div>
               </div>
 
               <div class="sub-section-title">Monthly expenses</div>
@@ -271,7 +1975,7 @@
                 <div class="form-group">
                   <label for="expRent">Rent / EMI</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expRent" value="25000" min="0" step="100">
                   </div>
                 </div>
@@ -279,7 +1983,7 @@
                 <div class="form-group">
                   <label for="expGroceries">Groceries & Food</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expGroceries" value="12000" min="0" step="100">
                   </div>
                 </div>
@@ -287,7 +1991,7 @@
                 <div class="form-group">
                   <label for="expBills">Bills & Recharge</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expBills" value="4000" min="0" step="100">
                   </div>
                 </div>
@@ -295,7 +1999,7 @@
                 <div class="form-group">
                   <label for="expTransport">Transport / Fuel</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expTransport" value="6000" min="0" step="100">
                   </div>
                 </div>
@@ -303,7 +2007,7 @@
                 <div class="form-group">
                   <label for="expShopping">Shopping & Outings</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expShopping" value="10000" min="0" step="100">
                   </div>
                 </div>
@@ -311,7 +2015,7 @@
                 <div class="form-group">
                   <label for="expFamily">Family & Health</label>
                   <div class="rupee-input">
-                    <span class="currency-symbol">₹</span>
+                    <span class="currency-symbol">â‚¹</span>
                     <input type="number" id="expFamily" value="5000" min="0" step="100">
                   </div>
                 </div>
@@ -320,7 +2024,7 @@
               <div class="form-group" style="margin-top: 14px;">
                 <label for="targetSavings">Target monthly savings</label>
                 <div class="rupee-input">
-                  <span class="currency-symbol">₹</span>
+                  <span class="currency-symbol">â‚¹</span>
                   <input type="number" id="targetSavings" value="20000" min="0" step="500">
                 </div>
               </div>
@@ -339,7 +2043,7 @@
 
               <button class="btn btn-action-generate" id="btn-generate-ai">
                 <span class="btn-spinner" id="gen-spinner" style="display:none;"></span>
-                <span>✨ Generate AI financial plan</span>
+                <span>âœ¨ Generate AI financial plan</span>
               </button>
             </div>
 
@@ -349,17 +2053,17 @@
               <div class="kpi-cards-row">
                 <div class="kpi-card card-income">
                   <div class="kpi-title">Income</div>
-                  <div class="kpi-value" id="kpi-income">₹85,000</div>
+                  <div class="kpi-value" id="kpi-income">â‚¹85,000</div>
                   <div class="kpi-sub">Total Take-home</div>
                 </div>
                 <div class="kpi-card card-spend">
                   <div class="kpi-title">Spend</div>
-                  <div class="kpi-value" id="kpi-spend">₹62,000</div>
+                  <div class="kpi-value" id="kpi-spend">â‚¹62,000</div>
                   <div class="kpi-sub" id="kpi-spend-pct">73% of income</div>
                 </div>
                 <div class="kpi-card card-savings">
                   <div class="kpi-title">Savings</div>
-                  <div class="kpi-value" id="kpi-savings">₹23,000</div>
+                  <div class="kpi-value" id="kpi-savings">â‚¹23,000</div>
                   <div class="kpi-sub" id="kpi-savings-pct">27% savings rate</div>
                 </div>
               </div>
@@ -378,39 +2082,39 @@
               <!-- Real-time Quick Advisor Highlights Box -->
               <div class="advisor-quick-box">
                 <div class="quick-title">
-                  <span>💡</span> <strong>Your advisor says</strong>
+                  <span>ðŸ’¡</span> <strong>Your advisor says</strong>
                 </div>
                 <ul class="quick-insights-list" id="quickInsightsList">
-                  <li>✅ You beat your savings goal by ₹3,000.</li>
-                  <li>⚠️ Biggest spend: <strong>Rent / EMI</strong> at ₹25,000.</li>
-                  <li>💡 Tip: auto-invest savings on salary day with a SIP so you don't spend it.</li>
+                  <li>âœ… You beat your savings goal by â‚¹3,000.</li>
+                  <li>âš ï¸ Biggest spend: <strong>Rent / EMI</strong> at â‚¹25,000.</li>
+                  <li>ðŸ’¡ Tip: auto-invest savings on salary day with a SIP so you don't spend it.</li>
                 </ul>
               </div>
 
               <!-- Interactive Unique Feature 2: Indian 50-30-20 Rule Real-time Evaluator -->
               <div class="budget-rule-box">
                 <div class="budget-rule-header">
-                  <span>📊 50-30-20 Rule Check</span>
+                  <span>ðŸ“Š 50-30-20 Rule Check</span>
                   <span class="health-pill" id="healthScorePill">Health: Good (82/100)</span>
                 </div>
                 <div class="rule-bars">
                   <div class="rule-bar-item">
                     <div class="rule-bar-labels">
-                      <span>Needs (Target ≤ 50%)</span>
+                      <span>Needs (Target â‰¤ 50%)</span>
                       <span id="needsPct">53%</span>
                     </div>
                     <div class="rule-bar-bg"><div class="rule-bar-fill fill-needs" id="needsBar" style="width: 53%"></div></div>
                   </div>
                   <div class="rule-bar-item">
                     <div class="rule-bar-labels">
-                      <span>Wants (Target ≤ 30%)</span>
+                      <span>Wants (Target â‰¤ 30%)</span>
                       <span id="wantsPct">20%</span>
                     </div>
                     <div class="rule-bar-bg"><div class="rule-bar-fill fill-wants" id="wantsBar" style="width: 20%"></div></div>
                   </div>
                   <div class="rule-bar-item">
                     <div class="rule-bar-labels">
-                      <span>Savings & Investments (Target ≥ 20%)</span>
+                      <span>Savings & Investments (Target â‰¥ 20%)</span>
                       <span id="savingsRulePct">27%</span>
                     </div>
                     <div class="rule-bar-bg"><div class="rule-bar-fill fill-savings" id="savingsBar" style="width: 27%"></div></div>
@@ -432,8 +2136,8 @@
             <h2 class="section-heading">Detailed Budget Plan & Financial Health</h2>
           </div>
           <div class="results-action-buttons">
-            <button class="btn btn-outline" id="btn-save-plan">💾 Save Snapshot</button>
-            <button class="btn btn-primary" id="btn-export-pdf">📄 Download Monthly PDF Report</button>
+            <button class="btn btn-outline" id="btn-save-plan">ðŸ’¾ Save Snapshot</button>
+            <button class="btn btn-primary" id="btn-export-pdf">ðŸ“„ Download Monthly PDF Report</button>
           </div>
         </div>
 
@@ -441,7 +2145,7 @@
           <!-- Card 1: Budget Plan & Allocation -->
           <div class="result-card">
             <div class="card-head">
-              <span class="card-icon">🎯</span>
+              <span class="card-icon">ðŸŽ¯</span>
               <h3>Customized Budget Plan</h3>
             </div>
             <div class="card-body" id="ai-budget-plan">
@@ -452,7 +2156,7 @@
           <!-- Card 2: Actionable Savings & Cut Suggestions -->
           <div class="result-card">
             <div class="card-head">
-              <span class="card-icon">💡</span>
+              <span class="card-icon">ðŸ’¡</span>
               <h3>Saving Suggestions & Optimization</h3>
             </div>
             <div class="card-body" id="ai-savings-suggestions">
@@ -463,7 +2167,7 @@
           <!-- Card 3: Indian Investment & Wealth Strategy (Unique Feature) -->
           <div class="result-card">
             <div class="card-head">
-              <span class="card-icon">📈</span>
+              <span class="card-icon">ðŸ“ˆ</span>
               <h3>India-Specific Wealth & Tax Strategy</h3>
             </div>
             <div class="card-body" id="ai-investment-strategy">
@@ -474,7 +2178,7 @@
           <!-- Card 4: Executive Monthly Summary Report -->
           <div class="result-card full-width">
             <div class="card-head">
-              <span class="card-icon">📑</span>
+              <span class="card-icon">ðŸ“‘</span>
               <h3>Monthly Financial Executive Summary</h3>
             </div>
             <div class="card-body" id="ai-monthly-summary">
@@ -496,9 +2200,9 @@
           <div class="sim-grid">
             <div class="sim-controls">
               <div class="form-group">
-                <label>Monthly SIP Amount (₹)</label>
+                <label>Monthly SIP Amount (â‚¹)</label>
                 <input type="range" id="simSipSlider" min="500" max="100000" step="500" value="15000">
-                <div class="slider-val" id="simSipVal">₹15,000 / month</div>
+                <div class="slider-val" id="simSipVal">â‚¹15,000 / month</div>
               </div>
               <div class="form-group">
                 <label>Expected Return Rate (% p.a.)</label>
@@ -520,19 +2224,19 @@
               <div class="sim-kpi-grid">
                 <div class="sim-kpi">
                   <span class="sim-label">Total Invested</span>
-                  <span class="sim-amount" id="simInvested">₹9,00,000</span>
+                  <span class="sim-amount" id="simInvested">â‚¹9,00,000</span>
                 </div>
                 <div class="sim-kpi">
                   <span class="sim-label">Est. Returns</span>
-                  <span class="sim-amount text-success" id="simReturns">+₹3,37,300</span>
+                  <span class="sim-amount text-success" id="simReturns">+â‚¹3,37,300</span>
                 </div>
                 <div class="sim-kpi highlight">
                   <span class="sim-label">Total Corpus</span>
-                  <span class="sim-amount" id="simCorpus">₹12,37,300</span>
+                  <span class="sim-amount" id="simCorpus">â‚¹12,37,300</span>
                 </div>
               </div>
               <div class="sim-note" id="simEmergencyNote">
-                🛡️ <strong>Safety Check:</strong> At your current expense rate of ₹62,000/mo, a 6-month emergency buffer requires ₹3,72,000. Your monthly savings will fund this safety net in <strong>16 months</strong>!
+                ðŸ›¡ï¸ <strong>Safety Check:</strong> At your current expense rate of â‚¹62,000/mo, a 6-month emergency buffer requires â‚¹3,72,000. Your monthly savings will fund this safety net in <strong>16 months</strong>!
               </div>
             </div>
           </div>
@@ -552,7 +2256,7 @@
               <strong>You</strong>
               <small>Income, expenses, goals</small>
             </div>
-            <span class="flow-arrow">enter →</span>
+            <span class="flow-arrow">enter â†’</span>
           </div>
 
           <div class="flow-step">
@@ -560,7 +2264,7 @@
               <strong>FinVise AI app</strong>
               <small>Responsive web platform</small>
             </div>
-            <span class="flow-arrow">analyses with →</span>
+            <span class="flow-arrow">analyses with â†’</span>
           </div>
 
           <div class="flow-step">
@@ -568,7 +2272,7 @@
               <strong>Gemini AI</strong>
               <small>Budget engine</small>
             </div>
-            <span class="flow-arrow">returns →</span>
+            <span class="flow-arrow">returns â†’</span>
           </div>
 
           <div class="flow-outputs">
@@ -605,7 +2309,7 @@
             </div>
             <div class="req-item">
               <span class="req-label">ACCOUNT</span>
-              <span class="req-val">None needed — data stays on your device</span>
+              <span class="req-val">None needed â€” data stays on your device</span>
             </div>
           </div>
         </div>
@@ -689,11 +2393,11 @@
   <!-- Sticky Quick Bar for Mobile Phones -->
   <div class="mobile-action-bar">
     <div class="mobile-stats-brief">
-      <strong id="mobileNetSavings">₹23,000 Saved</strong>
+      <strong id="mobileNetSavings">â‚¹23,000 Saved</strong>
       <small>27% Savings Rate</small>
     </div>
     <button class="mobile-btn-quick" onclick="document.getElementById('advisor-section').scrollIntoView({behavior: 'smooth'})">
-      ⚡ Recalculate
+      âš¡ Recalculate
     </button>
   </div>
 
@@ -701,7 +2405,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-copy">
-        FinVise AI • AI Personal Finance Advisor • Made for India
+        FinVise AI â€¢ AI Personal Finance Advisor â€¢ Made for India
       </div>
       <div class="footer-disclaimer">
         Disclaimer: FinVise AI is an educational financial analysis tool and does not constitute SEBI registered investment advice.
@@ -709,6 +2413,886 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script>
+/**
+ * FinVise AI â€” Core Engine & Interactivity
+ * High-performance, offline-capable Indian financial budget AI generator,
+ * Real-time Chart.js integration, SIP Simulator, LocalStorage snapshot persistence,
+ * and high-fidelity PDF Monthly Financial Statement export.
+ */
+
+// Profile Pre-sets matching exactly the 4 scenarios
+const PROFILES = {
+  salaried: {
+    name: "Salaried Professional",
+    income: 85000,
+    rent: 25000,
+    groceries: 12000,
+    bills: 4000,
+    transport: 6000,
+    shopping: 10000,
+    family: 5000,
+    targetSavings: 20000,
+    preference: "wealth"
+  },
+  student: {
+    name: "College Student",
+    income: 15000,
+    rent: 6000,
+    groceries: 3500,
+    bills: 1000,
+    transport: 1500,
+    shopping: 1800,
+    family: 0,
+    targetSavings: 1200,
+    preference: "emergency"
+  },
+  freelancer: {
+    name: "Freelancer",
+    income: 60000,
+    rent: 18000,
+    groceries: 9000,
+    bills: 3500,
+    transport: 3000,
+    shopping: 6500,
+    family: 4000,
+    targetSavings: 16000,
+    preference: "emergency"
+  },
+  household: {
+    name: "Household Manager",
+    income: 120000,
+    rent: 32000,
+    groceries: 22000,
+    bills: 8500,
+    transport: 9500,
+    shopping: 14000,
+    family: 12000,
+    targetSavings: 22000,
+    preference: "family"
+  }
+};
+
+// State
+let chartInstance = null;
+let currentProfileKey = 'salaried';
+let simHorizonYears = 5;
+
+// DOM Elements
+const incomeInput = document.getElementById('incomeInput');
+const incomeHint = document.getElementById('incomeHint');
+const expRent = document.getElementById('expRent');
+const expGroceries = document.getElementById('expGroceries');
+const expBills = document.getElementById('expBills');
+const expTransport = document.getElementById('expTransport');
+const expShopping = document.getElementById('expShopping');
+const expFamily = document.getElementById('expFamily');
+const targetSavings = document.getElementById('targetSavings');
+const investmentPref = document.getElementById('investmentPref');
+
+const kpiIncome = document.getElementById('kpi-income');
+const kpiSpend = document.getElementById('kpi-spend');
+const kpiSpendPct = document.getElementById('kpi-spend-pct');
+const kpiSavings = document.getElementById('kpi-savings');
+const kpiSavingsPct = document.getElementById('kpi-savings-pct');
+const chartSavingsRateTag = document.getElementById('chartSavingsRateTag');
+
+const quickInsightsList = document.getElementById('quickInsightsList');
+const profileDropdown = document.getElementById('profileDropdown');
+const profileCards = document.querySelectorAll('.profile-card');
+
+// Simulator elements
+const simSipSlider = document.getElementById('simSipSlider');
+const simReturnSlider = document.getElementById('simReturnSlider');
+const simSipVal = document.getElementById('simSipVal');
+const simReturnVal = document.getElementById('simReturnVal');
+const simInvested = document.getElementById('simInvested');
+const simReturns = document.getElementById('simReturns');
+const simCorpus = document.getElementById('simCorpus');
+const simEmergencyNote = document.getElementById('simEmergencyNote');
+const periodBtns = document.querySelectorAll('.period-btn');
+
+// Rule 50-30-20 elements
+const needsPct = document.getElementById('needsPct');
+const wantsPct = document.getElementById('wantsPct');
+const savingsRulePct = document.getElementById('savingsRulePct');
+const needsBar = document.getElementById('needsBar');
+const wantsBar = document.getElementById('wantsBar');
+const savingsBar = document.getElementById('savingsBar');
+const healthScorePill = document.getElementById('healthScorePill');
+
+// Number formatting to Indian Lakhs/Crores convention
+function formatINR(number) {
+  if (isNaN(number)) return "â‚¹0";
+  const num = Math.round(number);
+  const isNegative = num < 0;
+  const absNum = Math.abs(num);
+  
+  const s = absNum.toString();
+  let lastThree = s.substring(s.length - 3);
+  const otherNumbers = s.substring(0, s.length - 3);
+  if (otherNumbers !== '') {
+    lastThree = ',' + lastThree;
+  }
+  const formatted = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+  return (isNegative ? "-â‚¹" : "â‚¹") + formatted;
+}
+
+// Convert number to Indian words
+function numberToIndianWords(num) {
+  if (!num || num <= 0) return "Zero";
+  const a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+  const b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+  const n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+  if (!n) return '';
+  let str = '';
+  str += (Number(n[1]) !== 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+  str += (Number(n[2]) !== 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+  str += (Number(n[3]) !== 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+  str += (Number(n[4]) !== 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+  str += (Number(n[5]) !== 0) ? ((str !== '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) : '';
+  return str.trim();
+}
+
+// Read current inputs
+function getFinancialData() {
+  const income = parseFloat(incomeInput.value) || 0;
+  const rent = parseFloat(expRent.value) || 0;
+  const groceries = parseFloat(expGroceries.value) || 0;
+  const bills = parseFloat(expBills.value) || 0;
+  const transport = parseFloat(expTransport.value) || 0;
+  const shopping = parseFloat(expShopping.value) || 0;
+  const family = parseFloat(expFamily.value) || 0;
+  const target = parseFloat(targetSavings.value) || 0;
+
+  const totalExpense = rent + groceries + bills + transport + shopping + family;
+  const netSavings = income - totalExpense;
+  const savingsRate = income > 0 ? (netSavings / income) * 100 : 0;
+  const spendRate = income > 0 ? (totalExpense / income) * 100 : 0;
+
+  // Indian 50-30-20 Classification:
+  // Needs: Rent + Groceries + Bills + Transport/Fuel (essential)
+  // Wants: Shopping & Outings + Discretionary Family spends
+  const needsTotal = rent + groceries + bills + transport;
+  const wantsTotal = shopping + family;
+
+  return {
+    income,
+    expenses: { rent, groceries, bills, transport, shopping, family },
+    totalExpense,
+    netSavings,
+    savingsRate,
+    spendRate,
+    target,
+    needsTotal,
+    wantsTotal,
+    preference: investmentPref.value
+  };
+}
+
+// Update UI and Dashboard
+function updateCalculations() {
+  const data = getFinancialData();
+
+  // Hints
+  const words = numberToIndianWords(data.income);
+  incomeHint.textContent = `${formatINR(data.income)} (${words ? words + ' Rupees' : ''})`;
+
+  // KPI cards
+  kpiIncome.textContent = formatINR(data.income);
+  kpiSpend.textContent = formatINR(data.totalExpense);
+  kpiSpendPct.textContent = `${Math.round(data.spendRate)}% of income`;
+
+  kpiSavings.textContent = formatINR(data.netSavings);
+  kpiSavingsPct.textContent = `${Math.round(data.savingsRate)}% savings rate`;
+  chartSavingsRateTag.textContent = `${Math.round(data.savingsRate)}% savings rate`;
+
+  if (data.netSavings < 0) {
+    kpiSavings.style.color = '#c0392b';
+  } else {
+    kpiSavings.style.color = '#12824c';
+  }
+
+  // 50-30-20 Rule Calculation
+  const inc = data.income > 0 ? data.income : 1;
+  const needsPercent = Math.min(100, Math.round((data.needsTotal / inc) * 100));
+  const wantsPercent = Math.min(100, Math.round((data.wantsTotal / inc) * 100));
+  const savingsPercent = Math.max(0, Math.round((data.netSavings / inc) * 100));
+
+  needsPct.textContent = `${needsPercent}%`;
+  wantsPct.textContent = `${wantsPercent}%`;
+  savingsRulePct.textContent = `${savingsPercent}%`;
+
+  needsBar.style.width = `${Math.min(100, needsPercent)}%`;
+  wantsBar.style.width = `${Math.min(100, wantsPercent)}%`;
+  savingsBar.style.width = `${Math.min(100, savingsPercent)}%`;
+
+  // Compute Financial Health Score (out of 100)
+  let healthScore = 70;
+  if (data.netSavings >= data.target && data.target > 0) healthScore += 10;
+  if (savingsPercent >= 20) healthScore += 10;
+  if (savingsPercent >= 30) healthScore += 5;
+  if (needsPercent > 60) healthScore -= 10;
+  if (wantsPercent > 35) healthScore -= 10;
+  if (data.netSavings < 0) healthScore = 32;
+
+  healthScore = Math.max(25, Math.min(98, healthScore));
+
+  let healthLabel = "Excellent";
+  let healthColor = "#0b753c";
+  let healthBg = "#e5f6ed";
+
+  if (healthScore < 50) {
+    healthLabel = "High Risk";
+    healthColor = "#b91c1c";
+    healthBg = "#fee2e2";
+  } else if (healthScore < 75) {
+    healthLabel = "Fair / Moderate";
+    healthColor = "#b45309";
+    healthBg = "#fef3c7";
+  }
+
+  healthScorePill.textContent = `Health: ${healthLabel} (${healthScore}/100)`;
+  healthScorePill.style.color = healthColor;
+  healthScorePill.style.backgroundColor = healthBg;
+
+  // Real-time Advisor Quick Insights list
+  generateQuickInsights(data);
+
+  // Update Chart
+  updateChart(data.expenses);
+
+  // Auto-sync Simulator
+  const mobSavings = document.getElementById('mobileNetSavings');
+  if (mobSavings) {
+    mobSavings.textContent = `${formatINR(data.netSavings)} Saved`;
+  }
+  if (data.netSavings > 500) {
+    const suggestedSip = Math.round(Math.min(data.netSavings * 0.75, 100000) / 500) * 500;
+    simSipSlider.value = suggestedSip;
+    simSipVal.textContent = `${formatINR(suggestedSip)} / month`;
+  }
+  updateSimulator();
+}
+
+function generateQuickInsights(data) {
+  const items = [];
+
+  // Goal check
+  if (data.netSavings >= data.target) {
+    const diff = data.netSavings - data.target;
+    items.push(`âœ… You beat your target savings goal by <strong>${formatINR(diff)}</strong>.`);
+  } else if (data.netSavings > 0) {
+    const shortfall = data.target - data.netSavings;
+    items.push(`âš ï¸ You are <strong>${formatINR(shortfall)}</strong> short of your â‚¹${data.target.toLocaleString('en-IN')} target savings.`);
+  } else {
+    items.push(`ðŸš¨ You are running a monthly deficit of <strong>${formatINR(Math.abs(data.netSavings))}</strong>. Urgent expense trim required!`);
+  }
+
+  // Find biggest category
+  const expEntries = Object.entries(data.expenses);
+  expEntries.sort((a, b) => b[1] - a[1]);
+  const [topCat, topAmt] = expEntries[0];
+  const catNames = {
+    rent: "Rent / EMI",
+    groceries: "Groceries & Food",
+    bills: "Bills & Recharge",
+    transport: "Transport / Fuel",
+    shopping: "Shopping & Outings",
+    family: "Family & Health"
+  };
+
+  const topPct = data.income > 0 ? Math.round((topAmt / data.income) * 100) : 0;
+  items.push(`ðŸ“Š Biggest spend: <strong>${catNames[topCat]}</strong> at <strong>${formatINR(topAmt)}</strong> (${topPct}% of income).`);
+
+  // Indian context tailored tip
+  if (data.expenses.shopping > data.income * 0.18) {
+    items.push(`ðŸ’¡ Tip: Discretionary shopping & dining out is high. Use UPI autopay limits or the '30-day rule' for non-essential buys.`);
+  } else if (data.netSavings > 15000) {
+    items.push(`ðŸ’¡ Tip: Auto-invest â‚¹${Math.round(data.netSavings * 0.7).toLocaleString('en-IN')} on salary credit day via SIP so surplus doesn't get spent.`);
+  } else {
+    items.push(`ðŸ’¡ Tip: Direct any festival bonuses or tax refunds directly into an emergency liquid mutual fund.`);
+  }
+
+  quickInsightsList.innerHTML = items.map(li => `<li>${li}</li>`).join('');
+}
+
+// Chart.js Bar Chart Setup
+function updateChart(expenses) {
+  const ctx = document.getElementById('expenseBarChart').getContext('2d');
+  const labels = ['Rent', 'Groceries', 'Bills', 'Transport', 'Shopping', 'Family'];
+  const values = [
+    expenses.rent,
+    expenses.groceries,
+    expenses.bills,
+    expenses.transport,
+    expenses.shopping,
+    expenses.family
+  ];
+
+  // Palette: Top category gets vibrant orange accent, others soft forest green shades
+  const maxVal = Math.max(...values);
+  const bgColors = values.map(v => (v === maxVal && v > 0) ? '#d96b27' : '#31694f');
+
+  if (chartInstance) {
+    chartInstance.data.datasets[0].data = values;
+    chartInstance.data.datasets[0].backgroundColor = bgColors;
+    chartInstance.update();
+  } else {
+    chartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          backgroundColor: bgColors,
+          borderRadius: 6,
+          barPercentage: 0.6,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (context) => ` ${formatINR(context.raw)}`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              font: { family: 'Plus Jakarta Sans', size: 11, weight: '600' },
+              color: '#4f6055'
+            }
+          },
+          y: {
+            grid: { color: 'rgba(0,0,0,0.05)' },
+            ticks: {
+              callback: (value) => value >= 1000 ? (value / 1000) + 'k' : value,
+              font: { family: 'Plus Jakarta Sans', size: 10 },
+              color: '#72857a'
+            }
+          }
+        }
+      }
+    });
+  }
+}
+
+// Profile Loader
+function loadProfile(key) {
+  const p = PROFILES[key];
+  if (!p) return;
+
+  incomeInput.value = p.income;
+  expRent.value = p.rent;
+  expGroceries.value = p.groceries;
+  expBills.value = p.bills;
+  expTransport.value = p.transport;
+  expShopping.value = p.shopping;
+  expFamily.value = p.family;
+  targetSavings.value = p.targetSavings;
+  investmentPref.value = p.preference;
+
+  // Highlight selected card
+  profileCards.forEach(c => {
+    if (c.dataset.profile === key) {
+      c.classList.add('active');
+    } else {
+      c.classList.remove('active');
+    }
+  });
+
+  profileDropdown.value = key;
+  updateCalculations();
+}
+
+// SIP & Compound Interest Calculator
+function updateSimulator() {
+  const p = parseFloat(simSipSlider.value) || 10000;
+  const annualRate = parseFloat(simReturnSlider.value) || 12;
+  const n = simHorizonYears;
+
+  simSipVal.textContent = `${formatINR(p)} / month`;
+  simReturnVal.textContent = `${annualRate}% p.a.`;
+
+  // SIP Future Value formula: M = P * [ ((1 + i)^n - 1) / i ] * (1 + i)
+  const i = (annualRate / 100) / 12; // Monthly rate
+  const months = n * 12;
+  const investedAmount = p * months;
+  const totalCorpus = p * ((Math.pow(1 + i, months) - 1) / i) * (1 + i);
+  const returns = totalCorpus - investedAmount;
+
+  simInvested.textContent = formatINR(investedAmount);
+  simReturns.textContent = `+${formatINR(returns)}`;
+  simCorpus.textContent = formatINR(totalCorpus);
+
+  // Emergency runway calculation
+  const data = getFinancialData();
+  const monthlyCost = data.totalExpense > 0 ? data.totalExpense : 1;
+  const sixMonthTarget = monthlyCost * 6;
+  const savingsAvail = data.netSavings > 0 ? data.netSavings : p;
+  const monthsToGoal = Math.ceil(sixMonthTarget / (savingsAvail > 0 ? savingsAvail : 1000));
+
+  simEmergencyNote.innerHTML = `
+    ðŸ›¡ï¸ <strong>Safety Check:</strong> At your current monthly expense rate of <strong>${formatINR(monthlyCost)}</strong>, a 6-month safety net requires <strong>${formatINR(sixMonthTarget)}</strong>.<br>
+    Allocating savings will fully fund this emergency buffer in <strong>${monthsToGoal} months</strong>!
+  `;
+}
+
+// AI Financial Generation Engine
+// Hybrid: Calls Gemini Cloud API if key is supplied; otherwise runs intelligent contextual expert engine locally!
+async function generateAIFinancialPlan() {
+  const btn = document.getElementById('btn-generate-ai');
+  const spinner = document.getElementById('gen-spinner');
+  btn.disabled = true;
+  spinner.style.display = 'inline-block';
+
+  const data = getFinancialData();
+  const apiKey = localStorage.getItem('finvise_gemini_key') || '';
+
+  try {
+    let result = null;
+    if (apiKey && apiKey.trim().length > 10) {
+      result = await callGeminiAPI(apiKey, data);
+    } else {
+      // High-precision local Indian financial heuristic reasoning engine
+      result = generateLocalAIAnalysis(data);
+    }
+
+    renderAIOutput(result);
+
+    // Scroll smoothly to output
+    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+
+  } catch (err) {
+    console.error("AI Generation error:", err);
+    // Fallback to local intelligence
+    const fallback = generateLocalAIAnalysis(data);
+    renderAIOutput(fallback);
+  } finally {
+    btn.disabled = false;
+    spinner.style.display = 'none';
+  }
+}
+
+// Local Expert Reasoning Engine (Zero Latency, zero failure)
+function generateLocalAIAnalysis(d) {
+  const inc = d.income;
+  const exp = d.totalExpense;
+  const sav = d.netSavings;
+  const target = d.target;
+  const rate = Math.round(d.savingsRate);
+
+  // 1. Budget Plan Breakdown
+  const idealNeeds = Math.round(inc * 0.50);
+  const idealWants = Math.round(inc * 0.30);
+  const idealSavings = Math.round(inc * 0.20);
+
+  const budgetPlanHTML = `
+    <div class="ai-recommendation-item">
+      <strong>Category Ceilings & Allocations</strong>
+      â€¢ Fixed Essentials (Rent, Bills, Groceries): Allocated <strong>${formatINR(d.needsTotal)}</strong> (Recommended ceiling: ${formatINR(idealNeeds)}).<br>
+      â€¢ Discretionary Outings & Lifestyle: Allocated <strong>${formatINR(d.wantsTotal)}</strong> (Target ceiling: ${formatINR(idealWants)}).<br>
+      â€¢ Investment & Surplus: <strong>${formatINR(sav)}</strong> (${rate}% vs ideal â‰¥20%).
+    </div>
+    <div class="ai-recommendation-item">
+      <strong>Monthly Cash Flow Assessment</strong>
+      ${sav >= target ? `You are generating an adequate surplus above your â‚¹${target.toLocaleString('en-IN')} target. Maintain strict cap on UPI impulse orders.` : `Surplus is tight. Need to trim â‚¹${(target - sav).toLocaleString('en-IN')} from flexible categories to hit your saving benchmark.`}
+    </div>
+  `;
+
+  // 2. Saving Suggestions & Leaks
+  let savingsSuggestionsHTML = '';
+  if (d.expenses.shopping > inc * 0.15) {
+    savingsSuggestionsHTML += `
+      <div class="ai-recommendation-item">
+        <strong>Cut UPI / Dining & Food Delivery Leaks</strong>
+        Shopping and eating out currently takes ${formatINR(d.expenses.shopping)}/mo. Setting a weekly UPI prepaid limit of ${formatINR(Math.round(d.expenses.shopping * 0.75 / 4))} can immediately free up <strong>${formatINR(Math.round(d.expenses.shopping * 0.25))}</strong> monthly.
+      </div>
+    `;
+  }
+  if (d.expenses.bills > 3000) {
+    savingsSuggestionsHTML += `
+      <div class="ai-recommendation-item">
+        <strong>Review Subscriptions & Telecom Tariffs</strong>
+        Audit recurring OTTs (Hotstar, Netflix, Prime), gym memberships, and high cellular postpaids. Annual family packs can yield 15-20% savings.
+      </div>
+    `;
+  }
+  savingsSuggestionsHTML += `
+    <div class="ai-recommendation-item">
+      <strong>The 24-Hour Cooling Off Rule</strong>
+      For any discretionary purchase on Amazon, Flipkart, or dining exceeding â‚¹1,500, enforce a 24-hour waiting window before executing payment.
+    </div>
+  `;
+
+  // 3. Indian Wealth & Tax Strategy
+  const sipAmt = Math.max(500, Math.round((sav > 0 ? sav * 0.65 : 2000) / 500) * 500);
+  const liquidAmt = Math.max(500, Math.round((sav > 0 ? sav * 0.35 : 1000) / 500) * 500);
+
+  let wealthStrategyHTML = `
+    <div class="ai-recommendation-item">
+      <strong>Systematic Investment Plan (SIP) Basket</strong>
+      Deploy <strong>${formatINR(sipAmt)}/month</strong> across:
+      â€¢ 50% in Nifty 50 Index Mutual Fund (Stable large cap core).<br>
+      â€¢ 30% in Parag Parikh / Flexicap Fund (Diversified equity exposure).<br>
+      â€¢ 20% in Midcap or Smallcap fund for long-term compound alpha.
+    </div>
+    <div class="ai-recommendation-item">
+      <strong>Liquid Emergency Cushion & Debt</strong>
+      Channel <strong>${formatINR(liquidAmt)}/month</strong> into a high-yield Auto-sweep Savings Account or Liquid Mutual Fund until a 6-month buffer of ${formatINR(exp * 6)} is secured.
+    </div>
+    <div class="ai-recommendation-item">
+      <strong>Indian Tax Optimization (Old vs New Regime)</strong>
+      ${inc > 750000 ? `Take advantage of Section 80C (PPF, ELSS, EPF up to â‚¹1.5L) or evaluate the New Tax Regime (Section 115BAC) for lower slab deductions without paperwork.` : `Your taxable slab falls favorably under 87A rebate thresholds. Focus on growth over aggressive tax shelter lock-ins.`}
+    </div>
+  `;
+
+  // 4. Executive Monthly Summary
+  const summaryHTML = `
+    <div style="background: #faf6ee; padding: 16px; border-radius: 12px; border: 1px solid #ebdcc5;">
+      <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+        <div><strong>Income Monitored:</strong> ${formatINR(inc)}</div>
+        <div><strong>Total Outflow:</strong> ${formatINR(exp)}</div>
+        <div><strong>Net Savings Retained:</strong> ${formatINR(sav)}</div>
+        <div><strong>Runway Funded:</strong> ${(sav > 0 ? (sav / (exp || 1)).toFixed(1) : '0')} Months / Month Worked</div>
+      </div>
+      <p style="margin-bottom: 6px;">
+        <strong>Advisor Recommendation:</strong> Your overall cashflow dynamic is healthy with a ${rate}% savings capture rate. 
+        Your primary priority this month should be enforcing automated SIP debits within 48 hours of salary deposit.
+      </p>
+      <small style="color: #647369;">Generated by FinVise AI Model v2.4 â€¢ Tailored for Indian Tier-1/Tier-2 urban economic parameters.</small>
+    </div>
+  `;
+
+  return {
+    budgetPlan: budgetPlanHTML,
+    savingsSuggestions: savingsSuggestionsHTML,
+    wealthStrategy: wealthStrategyHTML,
+    monthlySummary: summaryHTML
+  };
+}
+
+// Direct Gemini API Call (when custom API key is present)
+async function callGeminiAPI(apiKey, data) {
+  const prompt = `
+    You are FinVise AI, an elite Indian personal financial advisor.
+    Analyze this user's monthly personal finances (in INR Rupees):
+    - Monthly Net Take-Home: â‚¹${data.income}
+    - Total Expenses: â‚¹${data.totalExpense}
+    - Categories: Rent â‚¹${data.expenses.rent}, Groceries â‚¹${data.expenses.groceries}, Bills â‚¹${data.expenses.bills}, Transport â‚¹${data.expenses.transport}, Shopping â‚¹${data.expenses.shopping}, Family â‚¹${data.expenses.family}
+    - Net Savings: â‚¹${data.netSavings}
+    - Savings Target: â‚¹${data.target}
+    - Financial Goal Preference: ${data.preference}
+
+    Provide advice structured specifically for the Indian financial landscape (referencing SIPs, Mutual Funds, Emergency Fund in Liquid Funds/Auto-Sweep FD, 50/30/20 rule, UPI spending traps, Tax considerations).
+    Respond strictly in JSON format with keys:
+    "budgetPlan": HTML formatted strings with class="ai-recommendation-item",
+    "savingsSuggestions": HTML formatted strings with class="ai-recommendation-item",
+    "wealthStrategy": HTML formatted strings with class="ai-recommendation-item",
+    "monthlySummary": HTML formatted executive summary string.
+  `;
+
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { responseMimeType: "application/json" }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error(`Gemini API returned status ${response.status}`);
+  }
+
+  const json = await response.json();
+  const text = json.candidates[0].content.parts[0].text;
+  return JSON.parse(text);
+}
+
+function renderAIOutput(res) {
+  document.getElementById('ai-budget-plan').innerHTML = res.budgetPlan;
+  document.getElementById('ai-savings-suggestions').innerHTML = res.savingsSuggestions;
+  document.getElementById('ai-investment-strategy').innerHTML = res.wealthStrategy;
+  document.getElementById('ai-monthly-summary').innerHTML = res.monthlySummary;
+}
+
+// PDF Export Feature using jsPDF
+function exportMonthlyPDF() {
+  const { jsPDF } = window.jspdf;
+  if (!jsPDF) {
+    alert("PDF library is still initializing. Please try again in a moment.");
+    return;
+  }
+
+  const doc = new jsPDF();
+  const data = getFinancialData();
+  const dateStr = new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Header Banner
+  doc.setFillColor(13, 56, 36); // #0d3824
+  doc.rect(0, 0, 210, 36, 'F');
+
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(20);
+  doc.text("FinVise AI â€” Monthly Financial Health Report", 14, 20);
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(10);
+  doc.setTextColor(200, 225, 210);
+  doc.text(`Generated on: ${dateStr} â€¢ Profile: ${PROFILES[currentProfileKey]?.name || 'Custom'}`, 14, 28);
+
+  // Financial Metrics Summary Table
+  doc.setTextColor(20, 30, 25);
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.text("Executive Cashflow Overview", 14, 48);
+
+  doc.setDrawColor(220, 220, 220);
+  doc.line(14, 52, 196, 52);
+
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "normal");
+  doc.text(`Total Monthly Take-Home Income:`, 14, 60);
+  doc.setFont("helvetica", "bold");
+  doc.text(formatINR(data.income), 140, 60);
+
+  doc.setFont("helvetica", "normal");
+  doc.text(`Total Monthly Expenses:`, 14, 68);
+  doc.setFont("helvetica", "bold");
+  doc.text(formatINR(data.totalExpense), 140, 68);
+
+  doc.setFont("helvetica", "normal");
+  doc.text(`Net Monthly Savings Surplus:`, 14, 76);
+  doc.setFont("helvetica", "bold");
+  doc.setTextColor(17, 104, 67);
+  doc.text(formatINR(data.netSavings), 140, 76);
+
+  doc.setTextColor(20, 30, 25);
+  doc.setFont("helvetica", "normal");
+  doc.text(`Monthly Savings Rate:`, 14, 84);
+  doc.setFont("helvetica", "bold");
+  doc.text(`${Math.round(data.savingsRate)}%`, 140, 84);
+
+  // Category Breakdown
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.text("Expense Category Distribution", 14, 100);
+  doc.line(14, 104, 196, 104);
+
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  const cats = [
+    ["1. House Rent / EMI", data.expenses.rent],
+    ["2. Groceries & Daily Food", data.expenses.groceries],
+    ["3. Utility Bills & Recharges", data.expenses.bills],
+    ["4. Transport & Fuel", data.expenses.transport],
+    ["5. Shopping & Outings", data.expenses.shopping],
+    ["6. Family & Healthcare", data.expenses.family]
+  ];
+
+  let y = 112;
+  cats.forEach(([label, val]) => {
+    doc.text(label, 18, y);
+    doc.text(formatINR(val), 140, y);
+    y += 8;
+  });
+
+  // Actionable Insights Section
+  y += 6;
+  doc.setFontSize(14);
+  doc.setFont("helvetica", "bold");
+  doc.text("AI Advisor Key Takeaways & Wealth Roadmap", 14, y);
+  doc.line(14, y + 4, 196, y + 4);
+
+  y += 12;
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+  doc.text("â€¢ Emergency Fund: Target 6 months of expenses (" + formatINR(data.totalExpense * 6) + ") in liquid instruments.", 14, y);
+  y += 7;
+  doc.text("â€¢ SIP Allocation: Recommend investing " + formatINR(Math.round(data.netSavings * 0.7)) + " in diversified mutual funds.", 14, y);
+  y += 7;
+  doc.text("â€¢ UPI Discipline: Cap discretionary entertainment and food ordering to under 15% of take-home pay.", 14, y);
+  y += 7;
+  doc.text("â€¢ Tax Optimization: Review ELSS / PPF allocation for 80C or leverage 115BAC new tax rates.", 14, y);
+
+  // Footer Disclaimer
+  doc.setFontSize(8);
+  doc.setTextColor(120, 130, 125);
+  doc.text("FinVise AI is an educational tool. All projections are educational estimations and not SEBI registered advice.", 14, 280);
+
+  doc.save(`FinVise_Financial_Report_${dateStr.replace(/ /g, '_')}.pdf`);
+}
+
+// Local Storage Snapshot Persistence
+function saveCurrentSnapshot() {
+  const data = getFinancialData();
+  const snapshots = JSON.parse(localStorage.getItem('finvise_snapshots') || '[]');
+  const newSnapshot = {
+    id: Date.now(),
+    date: new Date().toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
+    profile: PROFILES[currentProfileKey]?.name || 'Custom',
+    income: data.income,
+    spend: data.totalExpense,
+    savings: data.netSavings,
+    savingsRate: Math.round(data.savingsRate)
+  };
+
+  snapshots.unshift(newSnapshot);
+  localStorage.setItem('finvise_snapshots', JSON.stringify(snapshots.slice(0, 10))); // keep top 10
+  alert(`Snapshot saved successfully! (${newSnapshot.date})`);
+}
+
+function renderSavedSnapshots() {
+  const list = document.getElementById('historyListContainer');
+  const snapshots = JSON.parse(localStorage.getItem('finvise_snapshots') || '[]');
+
+  if (snapshots.length === 0) {
+    list.innerHTML = `<p class="placeholder-text">No saved snapshots found. Generate a plan and click "Save Snapshot"!</p>`;
+    return;
+  }
+
+  list.innerHTML = snapshots.map(s => `
+    <div class="saved-snapshot-card">
+      <div class="snapshot-info">
+        <strong>${s.profile} â€¢ ${s.date}</strong>
+        <small>Income: ${formatINR(s.income)} | Spend: ${formatINR(s.spend)} | Savings: ${formatINR(s.savings)} (${s.savingsRate}%)</small>
+      </div>
+      <button class="btn btn-outline btn-sm" onclick="restoreSnapshot(${s.income}, ${s.spend}, ${s.savings})">View</button>
+    </div>
+  `).join('');
+}
+
+// Event Listeners Initialization
+function initEventListeners() {
+  // Input real-time bindings
+  const inputs = [incomeInput, expRent, expGroceries, expBills, expTransport, expShopping, expFamily, targetSavings, investmentPref];
+  inputs.forEach(el => {
+    el.addEventListener('input', updateCalculations);
+  });
+
+  // Profile Cards click
+  profileCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const pKey = card.dataset.profile;
+      currentProfileKey = pKey;
+      loadProfile(pKey);
+    });
+  });
+
+  // Profile Dropdown
+  profileDropdown.addEventListener('change', (e) => {
+    currentProfileKey = e.target.value;
+    loadProfile(e.target.value);
+  });
+
+  // Simulator Sliders & Horizon Buttons
+  simSipSlider.addEventListener('input', updateSimulator);
+  simReturnSlider.addEventListener('input', updateSimulator);
+  periodBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      periodBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      simHorizonYears = parseInt(btn.dataset.years, 10);
+      updateSimulator();
+    });
+  });
+
+  // AI Generation Button
+  document.getElementById('btn-generate-ai').addEventListener('click', generateAIFinancialPlan);
+
+  // PDF Export
+  document.getElementById('btn-export-pdf').addEventListener('click', exportMonthlyPDF);
+
+  // Save Snapshot
+  document.getElementById('btn-save-plan').addEventListener('click', saveCurrentSnapshot);
+
+  // History Modal
+  const historyModal = document.getElementById('historyModal');
+  document.getElementById('btn-open-history').addEventListener('click', () => {
+    renderSavedSnapshots();
+    historyModal.classList.add('open');
+  });
+  document.getElementById('btnCloseHistory').addEventListener('click', () => {
+    historyModal.classList.remove('open');
+  });
+
+  // API Key Modal
+  const apiModal = document.getElementById('apiModal');
+  const apiStatusBadge = document.getElementById('api-status-badge');
+  const geminiApiKey = document.getElementById('geminiApiKey');
+
+  const savedKey = localStorage.getItem('finvise_gemini_key');
+  if (savedKey) {
+    geminiApiKey.value = savedKey;
+    apiStatusBadge.textContent = 'Active (Custom)';
+    apiStatusBadge.style.background = '#d1fae5';
+    apiStatusBadge.style.color = '#065f46';
+  }
+
+  document.getElementById('btn-api-modal').addEventListener('click', () => {
+    apiModal.classList.add('open');
+  });
+  document.getElementById('btnCloseApi').addEventListener('click', () => {
+    apiModal.classList.remove('open');
+  });
+  document.getElementById('btn-save-key').addEventListener('click', () => {
+    const val = geminiApiKey.value.trim();
+    if (val) {
+      localStorage.setItem('finvise_gemini_key', val);
+      apiStatusBadge.textContent = 'Active (Custom)';
+      apiStatusBadge.style.background = '#d1fae5';
+      apiStatusBadge.style.color = '#065f46';
+    }
+    apiModal.classList.remove('open');
+  });
+  document.getElementById('btn-clear-key').addEventListener('click', () => {
+    localStorage.removeItem('finvise_gemini_key');
+    geminiApiKey.value = '';
+    apiStatusBadge.textContent = 'Default (Offline)';
+    apiStatusBadge.style.background = '#e5f5ec';
+    apiStatusBadge.style.color = '#0b6837';
+    apiModal.classList.remove('open');
+  });
+
+  // System Specs Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      const target = document.getElementById(btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+
+  // Close modals on clicking overlay outside
+  window.addEventListener('click', (e) => {
+    if (e.target === historyModal) historyModal.classList.remove('open');
+    if (e.target === apiModal) apiModal.classList.remove('open');
+  });
+}
+
+// Initial Boot
+document.addEventListener('DOMContentLoaded', () => {
+  initEventListeners();
+  loadProfile('salaried');
+  generateAIFinancialPlan(); // Pre-generate initial plan for seamless display
+});
+
+</script>
 </body>
 </html>
+
