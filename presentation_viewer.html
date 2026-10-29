@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinVise AI — Project Presentation Slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #111827;
+      color: #1f2937;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .top-toolbar {
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 12px 24px;
+      border-radius: 99px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .top-toolbar span {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #064e3b;
+    }
+
+    .btn-print {
+      background: #059669;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .slide {
+      width: 100%;
+      max-width: 1080px;
+      aspect-ratio: 16 / 9;
+      background: #fbf7ee;
+      border-radius: 20px;
+      padding: 45px 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Slide 1 Dark Theme */
+    .slide-dark {
+      background: radial-gradient(circle at 80% 20%, #154c33 0%, #0c3621 100%);
+      color: white;
+    }
+
+    .slide-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #ea580c;
+      margin-bottom: 6px;
+    }
+
+    .slide-dark .slide-tag {
+      color: #fcd34d;
+    }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #0d3824;
+      line-height: 1.2;
+    }
+
+    .slide-dark .slide-title {
+      color: white;
+      font-size: 2.8rem;
+    }
+
+    .slide-body {
+      flex-grow: 1;
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .col {
+      flex: 1;
+      background: white;
+      border: 1px solid #e7dfd0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .col h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .col ul {
+      list-style: none;
+    }
+
+    .col ul li {
+      font-size: 0.95rem;
+      color: #374151;
+      margin-bottom: 10px;
+      line-height: 1.45;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .col ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #059669;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    /* 4 Scenarios Grid */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .scenario-card {
+      background: white;
+      border: 1px solid #e7dfd0;
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .scenario-card h4 {
+      font-size: 1.05rem;
+      color: #0d3824;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .scenario-income {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ea580c;
+      margin-bottom: 10px;
+    }
+
+    .scenario-card p {
+      font-size: 0.85rem;
+      color: #4b5563;
+      line-height: 1.4;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding-top: 14px;
+      font-size: 0.8rem;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    .slide-dark .slide-footer {
+      border-top-color: rgba(255, 255, 255, 0.15);
+      color: #9ca3af;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        gap: 0;
+      }
+      .top-toolbar {
+        display: none;
+      }
+      .slide {
+        page-break-after: always;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        height: 100vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-toolbar">
+    <span>📊 FinVise AI — Presentation Slide Deck</span>
+    <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+  </div>
+
+  <!-- SLIDE 1 -->
+  <div class="slide slide-dark">
+    <div>
+      <div class="slide-tag">AI-POWERED FINANCIAL PLANNING ASSISTANT • MADE FOR INDIA</div>
+      <h1 class="slide-title">Personal Finance Advisor Bot</h1>
+      <p style="font-size:1.15rem; color:#d1fae5; margin-top:14px; max-width:800px; line-height:1.5;">
+        A full-stack, responsive platform with AI-driven budget generation, 50-30-20 rule check, SIP wealth growth simulator, and instant monthly financial reporting.
+      </p>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.08); padding:16px 24px; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
+      <div style="display:flex; justify-content:space-between; font-size:0.9rem; color:#a7f3d0;">
+        <span>🌐 <strong>Live App:</strong> quiet-stardust-eacb3c.netlify.app</span>
+        <span>💻 <strong>GitHub:</strong> github.com/tarunchavan2501-source/finvise-ai</span>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 1 of 6</span>
+      <span>Made for India</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide">
+    <div>
+      <div class="slide-tag">PROBLEM STATEMENT & SOLUTION</div>
+      <h2 class="slide-title">Why FinVise AI?</h2>
+    </div>
+
+    <div class="slide-body">
+      <div class="col">
+        <h3 style="color:#dc2626;">The Problem in India</h3>
+        <ul>
+          <li><strong>Discretionary UPI Leaks:</strong> Frequent micro-spends on Swiggy, Zomato, and online shopping go unmonitored.</li>
+          <li><strong>No Spending Ceilings:</strong> Users lack real-time warnings when rent, groceries, or dining out exceed healthy thresholds.</li>
+          <li><strong>Complex Jargon:</strong> Heavy financial language confuses young professionals, college students, and homemakers.</li>
+          <li><strong>Privacy Concerns:</strong> Many financial apps require bank logins, passwords, and sensitive permissions.</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 style="color:#059669;">The FinVise AI Solution</h3>
+        <ul>
+          <li><strong>Centralized Dashboard:</strong> One clean interface for monthly salary and 6 core Indian spending categories.</li>
+          <li><strong>Real-time 50-30-20 Rule Check:</strong> Instant visual meters for Needs (≤50%), Wants (≤30%), and Savings (≥20%).</li>
+          <li><strong>Dynamic Health Score:</strong> Instant 0–100 score rating monthly financial health.</li>
+          <li><strong>100% Privacy by Design:</strong> Zero login needed; all calculations and data stay securely in your browser.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 2 of 6</span>
+      <span>Problem & Objectives</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide">
+    <div>
+      <div class="slide-tag">WHO IT'S FOR</div>
+      <h2 class="slide-title">4 Ready-Made Life Personas</h2>
+    </div>
+
+    <div class="slide-body">
+      <div class="grid-4">
+        <div class="scenario-card">
+          <div>
+            <h4>Salaried Professional</h4>
+            <div class="scenario-income">Rs. 85,000 / mo</div>
+            <p>Regular salary with fixed rent/EMI commitments. Spots UPI overspending and builds disciplined SIP plans.</p>
+          </div>
+          <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:10px;">Focus: Wealth & SIP</div>
+        </div>
+
+        <div class="scenario-card">
+          <div>
+            <h4>College Student</h4>
+            <div class="scenario-income">Rs. 15,000 / mo</div>
+            <p>Manages tight pocket money across hostel, mess, and weekends. Encourages starting an early Rs. 500 SIP.</p>
+          </div>
+          <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:10px;">Focus: Tight Control</div>
+        </div>
+
+        <div class="scenario-card">
+          <div>
+            <h4>Freelancer</h4>
+            <div class="scenario-income">Rs. 60,000 / mo</div>
+            <p>Handles fluctuating client income. Prioritizes building a 6-month liquid buffer and advance tax reserves.</p>
+          </div>
+          <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:10px;">Focus: Emergency Buffer</div>
+        </div>
+
+        <div class="scenario-card">
+          <div>
+            <h4>Household Manager</h4>
+            <div class="scenario-income">Rs. 1,20,000 / mo</div>
+            <p>Monitors combined family income across groceries, school fees, utilities, and emergency medical security.</p>
+          </div>
+          <div style="font-size:0.75rem; color:#059669; font-weight:700; margin-top:10px;">Focus: Family Safety</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 3 of 6</span>
+      <span>Target User Scenarios</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide">
+    <div>
+      <div class="slide-tag">TECHNICAL ARCHITECTURE</div>
+      <h2 class="slide-title">System Architecture & Engineering</h2>
+    </div>
+
+    <div class="slide-body">
+      <div class="col">
+        <h3 style="color:#0d3824;">1. Front-End Layer</h3>
+        <ul>
+          <li><strong>Pure HTML5, CSS3 & Modern JS:</strong> Zero build dependencies for instant, reliable loading.</li>
+          <li><strong>Mobile-First Design:</strong> Optimized for all mobile phones, tablets, and laptops.</li>
+          <li><strong>Chart.js Visualization:</strong> Real-time bar chart with dynamic orange highlighting on the highest expense.</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 style="color:#059669;">2. Processing Engine</h3>
+        <ul>
+          <li><strong>Offline-First Rule Engine:</strong> Instant budget analysis without requiring network calls.</li>
+          <li><strong>50-30-20 Rule Validator:</strong> Real-time calculation of essential needs vs lifestyle wants.</li>
+          <li><strong>Compound Interest Math:</strong> Precise future value SIP projections at 12% p.a. (Nifty 50 historical average).</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 style="color:#ea580c;">3. AI & Storage Layer</h3>
+        <ul>
+          <li><strong>Google Gemini API:</strong> Integrated connector for advanced natural language financial guidance.</li>
+          <li><strong>Browser LocalStorage:</strong> Saves user snapshots locally without external database leaks.</li>
+          <li><strong>jsPDF Generator:</strong> 1-click client-side download of monthly executive reports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 4 of 6</span>
+      <span>Architecture & Technical Flow</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide">
+    <div>
+      <div class="slide-tag">UNIQUE CAPABILITIES</div>
+      <h2 class="slide-title">Standout Platform Features</h2>
+    </div>
+
+    <div class="slide-body">
+      <div class="col">
+        <h3 style="color:#059669;">SIP & Emergency Fund Simulator</h3>
+        <ul>
+          <li>Interactive monthly slider from <strong>Rs. 500 to Rs. 1,00,000</strong>.</li>
+          <li>Simulates returns across <strong>1, 3, 5, and 10 years</strong>.</li>
+          <li>Automated <strong>Emergency Runway Check</strong>: Calculates exactly how many months it takes to fund a 6-month survival cushion based on user expenses.</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h3 style="color:#ea580c;">Executive Monthly Report</h3>
+        <ul>
+          <li>Clean 1-page financial breakdown ready for download as a PDF.</li>
+          <li>Details income vs expense ratios, category ledgers, and customized action items.</li>
+          <li>Snapshot comparison tool allows users to compare different months side by side.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 5 of 6</span>
+      <span>Product Highlights</span>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide slide-dark">
+    <div>
+      <div class="slide-tag">PROJECT SUMMARY & DEMONSTRATION</div>
+      <h2 class="slide-title">Live & Ready to Demo</h2>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:16px; padding:30px; margin:24px 0;">
+      <ul style="list-style:none; line-height:2; font-size:1.1rem; color:#e6f4ea;">
+        <li>✅ <strong>Production URL:</strong> <a href="https://quiet-stardust-eacb3c.netlify.app" target="_blank" style="color:#fcd34d; font-weight:700;">https://quiet-stardust-eacb3c.netlify.app</a></li>
+        <li>✅ <strong>GitHub Repository:</strong> <a href="https://github.com/tarunchavan2501-source/finvise-ai" target="_blank" style="color:#fcd34d; font-weight:700;">github.com/tarunchavan2501-source/finvise-ai</a></li>
+        <li>✅ <strong>Device Compatibility:</strong> Verified responsive on Android, iOS, Windows, and macOS.</li>
+        <li>✅ <strong>Interactive Functions:</strong> All buttons, inputs, sliders, and PDF generation work with zero errors.</li>
+      </ul>
+    </div>
+
+    <div class="slide-footer">
+      <span>FinVise AI • Slide 6 of 6</span>
+      <span>Thank You</span>
+    </div>
+  </div>
+
+</body>
+</html>
