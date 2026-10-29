@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinVise AI — Personal Finance Advisor | Made for India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js and jsPDF -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-icon">₹</div>
+        <div class="brand-text">
+          <span class="brand-name">FinVise <span class="highlight-ai">AI</span></span>
+          <span class="brand-tagline">AI Personal Finance Advisor • Made for India</span>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-outline" id="btn-api-modal" title="Configure Gemini API Key">
+          <span class="key-icon">🔑</span> Gemini Key <span class="badge-status" id="api-status-badge">Default</span>
+        </button>
+        <button class="btn btn-outline" id="btn-open-history">
+          <span>📜</span> History & Compare
+        </button>
+        <a href="#advisor-section" class="btn btn-primary try-tool-btn">Try the tool</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="pill-group">
+              <span class="pill pill-muted">Finance</span>
+              <span class="pill pill-muted">Individual & Family</span>
+              <span class="pill pill-live">● Live</span>
+            </div>
+            <h1 class="hero-title">
+              Take charge of every <span class="rupee-text">rupee</span>, with an AI advisor in your pocket.
+            </h1>
+            <p class="hero-subtitle">
+              Record your monthly income, log daily and weekly expenses by category, and get a personalised budget plan, saving suggestions and a monthly report — powered by Gemini AI.
+            </p>
+            
+            <div class="hero-stats-row">
+              <div class="stat-pill">
+                <span class="stat-number">6</span>
+                <span class="stat-desc">Indian expense categories</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-number">4</span>
+                <span class="stat-desc">Ready-made life profiles</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-number">₹</span>
+                <span class="stat-desc">Lakh-style number format</span>
+              </div>
+              <div class="stat-pill">
+                <span class="stat-number">AI</span>
+                <span class="stat-desc">Gemini budget engine</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="floating-badge badge-saved">
+              <span class="badge-label">SAVED THIS MONTH</span>
+              <span class="badge-val">+₹23,000</span>
+            </div>
+            
+            <div class="phone-mockup">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <div class="phone-header">
+                  <div class="phone-avatar">JD</div>
+                  <div>
+                    <div class="phone-user">Namaste, Rohan</div>
+                    <div class="phone-sub">Monthly Health Score: 84/100</div>
+                  </div>
+                </div>
+                <div class="phone-card">
+                  <span class="phone-card-title">Balance Available</span>
+                  <div class="phone-card-amt">₹1,14,080</div>
+                  <div class="phone-meter"><div class="meter-fill" style="width: 72%"></div></div>
+                </div>
+                <div class="phone-list">
+                  <div class="phone-item">
+                    <span>Swiggy & Zomato</span>
+                    <span class="exp-cost">-₹1,420</span>
+                  </div>
+                  <div class="phone-item">
+                    <span>SIP Index Fund</span>
+                    <span class="sav-cost">+₹10,000</span>
+                  </div>
+                  <div class="phone-item">
+                    <span>House Rent EMI</span>
+                    <span class="exp-cost">-₹25,000</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-badge badge-rate">
+              <span class="badge-label">SAVINGS RATE</span>
+              <span class="badge-val">27%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Feature Badges Row -->
+    <section class="trust-features">
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-text">
+            <h3>Private by design</h3>
+            <p>Your numbers stay on your device — no login, no data sharing.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🇮🇳</div>
+          <div class="feature-text">
+            <h3>Built for India</h3>
+            <p>Rupees, lakhs, UPI habits, SIPs, PPF and FDs baked into advice.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-text">
+            <h3>Instant AI plans</h3>
+            <p>A personalised budget and saving plan in seconds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Persona Quick Profiles -->
+    <section class="profiles-section">
+      <div class="section-container">
+        <div class="section-tag">WHO IT'S FOR</div>
+        <div class="section-header-flex">
+          <h2 class="section-heading">Pick a profile to start</h2>
+          <span class="sub-hint">Click one to preload it into the tool</span>
+        </div>
+
+        <div class="profiles-grid">
+          <!-- Profile 1 -->
+          <div class="profile-card active" data-profile="salaried">
+            <div class="profile-top">
+              <div class="profile-meta">
+                <span class="profile-emoji">💼</span>
+                <div>
+                  <h4 class="profile-name">Salaried Professional</h4>
+                  <span class="profile-type">Regular income • Fixed + variable costs</span>
+                </div>
+              </div>
+              <span class="profile-salary">₹85,000<small>/mo</small></span>
+            </div>
+            <p class="profile-desc">
+              Logs a monthly salary and daily UPI spends across rent, food, travel and outings. FinVise AI spots overspending and builds a plan with SIP and emergency-fund suggestions.
+            </p>
+          </div>
+
+          <!-- Profile 2 -->
+          <div class="profile-card" data-profile="student">
+            <div class="profile-top">
+              <div class="profile-meta">
+                <span class="profile-emoji">🎓</span>
+                <div>
+                  <h4 class="profile-name">College Student</h4>
+                  <span class="profile-type">Pocket money • Tight control</span>
+                </div>
+              </div>
+              <span class="profile-salary">₹15,000<small>/mo</small></span>
+            </div>
+            <p class="profile-desc">
+              Manages a limited monthly allowance across hostel, mess, recharge and weekends. Gets realistic limits and nudges to cut unnecessary spends and start a small ₹500 SIP.
+            </p>
+          </div>
+
+          <!-- Profile 3 -->
+          <div class="profile-card" data-profile="freelancer">
+            <div class="profile-top">
+              <div class="profile-meta">
+                <span class="profile-emoji">💻</span>
+                <div>
+                  <h4 class="profile-name">Freelancer</h4>
+                  <span class="profile-type">Variable income • Tax planning</span>
+                </div>
+              </div>
+              <span class="profile-salary">₹60,000<small>/mo</small></span>
+            </div>
+            <p class="profile-desc">
+              Earns from multiple clients with uneven months. FinVise AI adapts the budget to income swings and prioritises a 6-month emergency buffer and advance tax reserve.
+            </p>
+          </div>
+
+          <!-- Profile 4 -->
+          <div class="profile-card" data-profile="household">
+            <div class="profile-top">
+              <div class="profile-meta">
+                <span class="profile-emoji">🏡</span>
+                <div>
+                  <h4 class="profile-name">Household Manager</h4>
+                  <span class="profile-type">Family budget • Shared goals</span>
+                </div>
+              </div>
+              <span class="profile-salary">₹1,20,000<small>/mo</small></span>
+            </div>
+            <p class="profile-desc">
+              Tracks combined family income across groceries, school fees, utilities and healthcare, with a consolidated monthly report and family savings goals like gold and children's education.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive AI Finance Advisor Section (The Core Tool) -->
+    <section class="advisor-section" id="advisor-section">
+      <div class="section-container">
+        <div class="advisor-panel">
+          <div class="advisor-header">
+            <div>
+              <span class="live-pill">LIVE SANDBOX</span>
+              <h2 class="advisor-title">Interactive AI Finance Advisor</h2>
+              <p class="advisor-subtitle">Enter your monthly numbers in rupees and get instant analysis.</p>
+            </div>
+            <div class="quick-profile-selector">
+              <label for="profileDropdown">Quick profile</label>
+              <select id="profileDropdown" class="form-select">
+                <option value="salaried" selected>Salaried Professional</option>
+                <option value="student">College Student</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="household">Household Manager</option>
+                <option value="custom">Custom Entry</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="advisor-body">
+            <!-- Left: Inputs -->
+            <div class="inputs-col">
+              <h3 class="box-heading">FINANCIAL INPUTS</h3>
+              
+              <div class="form-group">
+                <label for="incomeInput">Monthly income (take-home)</label>
+                <div class="rupee-input">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="incomeInput" value="85000" min="0" step="500" placeholder="e.g. 85000">
+                </div>
+                <div class="formatted-hint" id="incomeHint">₹85,000 (Eighty Five Thousand)</div>
+              </div>
+
+              <div class="sub-section-title">Monthly expenses</div>
+
+              <div class="expenses-grid">
+                <div class="form-group">
+                  <label for="expRent">Rent / EMI</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expRent" value="25000" min="0" step="100">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="expGroceries">Groceries & Food</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expGroceries" value="12000" min="0" step="100">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="expBills">Bills & Recharge</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expBills" value="4000" min="0" step="100">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="expTransport">Transport / Fuel</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expTransport" value="6000" min="0" step="100">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="expShopping">Shopping & Outings</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expShopping" value="10000" min="0" step="100">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="expFamily">Family & Health</label>
+                  <div class="rupee-input">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="expFamily" value="5000" min="0" step="100">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 14px;">
+                <label for="targetSavings">Target monthly savings</label>
+                <div class="rupee-input">
+                  <span class="currency-symbol">₹</span>
+                  <input type="number" id="targetSavings" value="20000" min="0" step="500">
+                </div>
+              </div>
+
+              <!-- Unique Feature 1: Indian Investment Vehicles Allocation Preference -->
+              <div class="form-group investment-pref-group">
+                <label for="investmentPref">Primary Financial Goal / Focus</label>
+                <select id="investmentPref" class="form-select">
+                  <option value="wealth">Wealth Creation (Mutual Funds & Equity SIP)</option>
+                  <option value="tax">Tax Saving (80C, ELSS, PPF, NPS)</option>
+                  <option value="emergency">Emergency Safety Buffer (Liquid FD + RD)</option>
+                  <option value="debt">Debt Clearance (Prepay High-interest EMI)</option>
+                  <option value="family">Family Security (Term Life & Health Cover)</option>
+                </select>
+              </div>
+
+              <button class="btn btn-action-generate" id="btn-generate-ai">
+                <span class="btn-spinner" id="gen-spinner" style="display:none;"></span>
+                <span>✨ Generate AI financial plan</span>
+              </button>
+            </div>
+
+            <!-- Right: Real-time Stats, Chart & AI Advisor says -->
+            <div class="dashboard-col">
+              <!-- KPI Cards Row -->
+              <div class="kpi-cards-row">
+                <div class="kpi-card card-income">
+                  <div class="kpi-title">Income</div>
+                  <div class="kpi-value" id="kpi-income">₹85,000</div>
+                  <div class="kpi-sub">Total Take-home</div>
+                </div>
+                <div class="kpi-card card-spend">
+                  <div class="kpi-title">Spend</div>
+                  <div class="kpi-value" id="kpi-spend">₹62,000</div>
+                  <div class="kpi-sub" id="kpi-spend-pct">73% of income</div>
+                </div>
+                <div class="kpi-card card-savings">
+                  <div class="kpi-title">Savings</div>
+                  <div class="kpi-value" id="kpi-savings">₹23,000</div>
+                  <div class="kpi-sub" id="kpi-savings-pct">27% savings rate</div>
+                </div>
+              </div>
+
+              <!-- Chart Card -->
+              <div class="chart-container-box">
+                <div class="chart-header">
+                  <span class="chart-title">Where your money goes</span>
+                  <span class="chart-tag" id="chartSavingsRateTag">27% savings rate</span>
+                </div>
+                <div class="chart-wrapper">
+                  <canvas id="expenseBarChart"></canvas>
+                </div>
+              </div>
+
+              <!-- Real-time Quick Advisor Highlights Box -->
+              <div class="advisor-quick-box">
+                <div class="quick-title">
+                  <span>💡</span> <strong>Your advisor says</strong>
+                </div>
+                <ul class="quick-insights-list" id="quickInsightsList">
+                  <li>✅ You beat your savings goal by ₹3,000.</li>
+                  <li>⚠️ Biggest spend: <strong>Rent / EMI</strong> at ₹25,000.</li>
+                  <li>💡 Tip: auto-invest savings on salary day with a SIP so you don't spend it.</li>
+                </ul>
+              </div>
+
+              <!-- Interactive Unique Feature 2: Indian 50-30-20 Rule Real-time Evaluator -->
+              <div class="budget-rule-box">
+                <div class="budget-rule-header">
+                  <span>📊 50-30-20 Rule Check</span>
+                  <span class="health-pill" id="healthScorePill">Health: Good (82/100)</span>
+                </div>
+                <div class="rule-bars">
+                  <div class="rule-bar-item">
+                    <div class="rule-bar-labels">
+                      <span>Needs (Target ≤ 50%)</span>
+                      <span id="needsPct">53%</span>
+                    </div>
+                    <div class="rule-bar-bg"><div class="rule-bar-fill fill-needs" id="needsBar" style="width: 53%"></div></div>
+                  </div>
+                  <div class="rule-bar-item">
+                    <div class="rule-bar-labels">
+                      <span>Wants (Target ≤ 30%)</span>
+                      <span id="wantsPct">20%</span>
+                    </div>
+                    <div class="rule-bar-bg"><div class="rule-bar-fill fill-wants" id="wantsBar" style="width: 20%"></div></div>
+                  </div>
+                  <div class="rule-bar-item">
+                    <div class="rule-bar-labels">
+                      <span>Savings & Investments (Target ≥ 20%)</span>
+                      <span id="savingsRulePct">27%</span>
+                    </div>
+                    <div class="rule-bar-bg"><div class="rule-bar-fill fill-savings" id="savingsBar" style="width: 27%"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comprehensive AI Analysis & Monthly Report Output Section -->
+    <section class="results-section" id="results-section">
+      <div class="section-container">
+        <div class="results-header">
+          <div>
+            <div class="section-tag">AI GENERATED INSIGHTS</div>
+            <h2 class="section-heading">Detailed Budget Plan & Financial Health</h2>
+          </div>
+          <div class="results-action-buttons">
+            <button class="btn btn-outline" id="btn-save-plan">💾 Save Snapshot</button>
+            <button class="btn btn-primary" id="btn-export-pdf">📄 Download Monthly PDF Report</button>
+          </div>
+        </div>
+
+        <div class="results-grid">
+          <!-- Card 1: Budget Plan & Allocation -->
+          <div class="result-card">
+            <div class="card-head">
+              <span class="card-icon">🎯</span>
+              <h3>Customized Budget Plan</h3>
+            </div>
+            <div class="card-body" id="ai-budget-plan">
+              <p class="placeholder-text">Click "Generate AI financial plan" to receive your custom budget breakdown and category ceilings.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Actionable Savings & Cut Suggestions -->
+          <div class="result-card">
+            <div class="card-head">
+              <span class="card-icon">💡</span>
+              <h3>Saving Suggestions & Optimization</h3>
+            </div>
+            <div class="card-body" id="ai-savings-suggestions">
+              <p class="placeholder-text">Actionable strategies for reducing discretionary leaks and optimizing recurring commitments.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Indian Investment & Wealth Strategy (Unique Feature) -->
+          <div class="result-card">
+            <div class="card-head">
+              <span class="card-icon">📈</span>
+              <h3>India-Specific Wealth & Tax Strategy</h3>
+            </div>
+            <div class="card-body" id="ai-investment-strategy">
+              <p class="placeholder-text">Personalized SIP distribution, Emergency fund timeline, FD/RD laddering, and 80C tax saving avenues.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Executive Monthly Summary Report -->
+          <div class="result-card full-width">
+            <div class="card-head">
+              <span class="card-icon">📑</span>
+              <h3>Monthly Financial Executive Summary</h3>
+            </div>
+            <div class="card-body" id="ai-monthly-summary">
+              <p class="placeholder-text">A comprehensive executive overview showing Income vs. Expenses, Savings Achieved, Runway, and Next Month Targets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Unique Feature 3: Interactive SIP & Emergency Fund Simulator -->
+    <section class="simulator-section">
+      <div class="section-container">
+        <div class="simulator-box">
+          <div class="section-tag">UNIQUE INTERACTIVE TOOL</div>
+          <h2 class="section-heading">Emergency Fund & SIP Wealth Growth Simulator</h2>
+          <p class="simulator-sub">See how saving your monthly surplus transforms your wealth over 1, 3, 5, and 10 years in Indian equity mutual funds vs bank savings.</p>
+
+          <div class="sim-grid">
+            <div class="sim-controls">
+              <div class="form-group">
+                <label>Monthly SIP Amount (₹)</label>
+                <input type="range" id="simSipSlider" min="500" max="100000" step="500" value="15000">
+                <div class="slider-val" id="simSipVal">₹15,000 / month</div>
+              </div>
+              <div class="form-group">
+                <label>Expected Return Rate (% p.a.)</label>
+                <input type="range" id="simReturnSlider" min="6" max="18" step="0.5" value="12">
+                <div class="slider-val" id="simReturnVal">12% (Nifty 50 Historical Avg)</div>
+              </div>
+              <div class="form-group">
+                <label>Investment Horizon</label>
+                <div class="period-pills">
+                  <button class="period-btn" data-years="1">1 Yr</button>
+                  <button class="period-btn" data-years="3">3 Yrs</button>
+                  <button class="period-btn active" data-years="5">5 Yrs</button>
+                  <button class="period-btn" data-years="10">10 Yrs</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-results">
+              <div class="sim-kpi-grid">
+                <div class="sim-kpi">
+                  <span class="sim-label">Total Invested</span>
+                  <span class="sim-amount" id="simInvested">₹9,00,000</span>
+                </div>
+                <div class="sim-kpi">
+                  <span class="sim-label">Est. Returns</span>
+                  <span class="sim-amount text-success" id="simReturns">+₹3,37,300</span>
+                </div>
+                <div class="sim-kpi highlight">
+                  <span class="sim-label">Total Corpus</span>
+                  <span class="sim-amount" id="simCorpus">₹12,37,300</span>
+                </div>
+              </div>
+              <div class="sim-note" id="simEmergencyNote">
+                🛡️ <strong>Safety Check:</strong> At your current expense rate of ₹62,000/mo, a 6-month emergency buffer requires ₹3,72,000. Your monthly savings will fund this safety net in <strong>16 months</strong>!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Under The Hood Architecture -->
+    <section class="architecture-section">
+      <div class="section-container">
+        <div class="section-tag">UNDER THE HOOD</div>
+        <h2 class="section-heading">How it works</h2>
+        
+        <div class="workflow-diagram">
+          <div class="flow-step">
+            <div class="flow-box">
+              <strong>You</strong>
+              <small>Income, expenses, goals</small>
+            </div>
+            <span class="flow-arrow">enter →</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-box primary">
+              <strong>FinVise AI app</strong>
+              <small>Responsive web platform</small>
+            </div>
+            <span class="flow-arrow">analyses with →</span>
+          </div>
+
+          <div class="flow-step">
+            <div class="flow-box accent">
+              <strong>Gemini AI</strong>
+              <small>Budget engine</small>
+            </div>
+            <span class="flow-arrow">returns →</span>
+          </div>
+
+          <div class="flow-outputs">
+            <div class="output-pill">Budget plan</div>
+            <div class="output-pill">Saving suggestions</div>
+            <div class="output-pill">Monthly report</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- System Requirements & Specs Accordion -->
+    <section class="specs-section">
+      <div class="section-container">
+        <div class="specs-tabs">
+          <button class="tab-btn active" data-tab="system-req">System requirements</button>
+          <button class="tab-btn" data-tab="how-to-use">How to use</button>
+          <button class="tab-btn" data-tab="scenarios">Supported Scenarios</button>
+        </div>
+
+        <div class="tab-content active" id="system-req">
+          <div class="req-grid">
+            <div class="req-item">
+              <span class="req-label">DEVICE</span>
+              <span class="req-val">Any phone, tablet or laptop</span>
+            </div>
+            <div class="req-item">
+              <span class="req-label">BROWSER</span>
+              <span class="req-val">Chrome, Edge, Firefox or Safari</span>
+            </div>
+            <div class="req-item">
+              <span class="req-label">INTERNET</span>
+              <span class="req-val">Works on 4G / Jio / broadband</span>
+            </div>
+            <div class="req-item">
+              <span class="req-label">ACCOUNT</span>
+              <span class="req-val">None needed — data stays on your device</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="how-to-use">
+          <ol class="steps-list">
+            <li><strong>Select or Adjust Your Profile:</strong> Choose from Salaried, Student, Freelancer, or Household Manager to automatically load realistic numbers.</li>
+            <li><strong>Refine Numbers:</strong> Tailor your exact take-home salary, category spends, and target savings.</li>
+            <li><strong>Generate AI Plan:</strong> Click the AI plan button to trigger real-time AI budgeting algorithms with Indian financial best practices.</li>
+            <li><strong>Explore Simulated Growth:</strong> Use the built-in SIP simulator to calculate compound wealth growth.</li>
+            <li><strong>Download or Save:</strong> Export a printable PDF summary report or save snapshots for comparison.</li>
+          </ol>
+        </div>
+
+        <div class="tab-content" id="scenarios">
+          <div class="scenarios-list">
+            <div class="sc-item">
+              <strong>Scenario 1: Salaried Professional</strong>
+              <p>Logs monthly salary and daily spends across rent, groceries, and entertainment. System detects category leaks and formulates a disciplined SIP schedule.</p>
+            </div>
+            <div class="sc-item">
+              <strong>Scenario 2: College Student</strong>
+              <p>Tight pocket allowance budgeting, identifying dining out vs hostel mess spending, fostering early micro-investing habits.</p>
+            </div>
+            <div class="sc-item">
+              <strong>Scenario 3: Freelancer</strong>
+              <p>Adapts to fluctuating monthly receipts, calculates a 6-month liquid emergency runway, and sets aside advance tax reserves.</p>
+            </div>
+            <div class="sc-item">
+              <strong>Scenario 4: Household Manager</strong>
+              <p>Consolidates multi-member household budgets across school fees, medical bills, utilities, and long-term family security.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- History & Comparison Modal -->
+  <div class="modal-overlay" id="historyModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Saved Monthly Snapshots & History</h3>
+        <button class="modal-close" id="btnCloseHistory">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="historyListContainer">
+          <!-- Populated by JS -->
+          <p class="placeholder-text">No saved snapshots yet. Click "Save Snapshot" after generating a plan!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Key Settings Modal -->
+  <div class="modal-overlay" id="apiModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Gemini AI API Configuration</h3>
+        <button class="modal-close" id="btnCloseApi">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro">
+          FinVise AI comes with an <strong>Intelligent Offline Financial Rule Engine</strong> that produces full, instant budget plans even without an API key!
+        </p>
+        <p class="modal-intro">
+          If you wish to use your own Google Gemini API Key for direct cloud LLM generation, enter it below (stored securely in your browser's local storage):
+        </p>
+        <div class="form-group" style="margin-top: 15px;">
+          <label for="geminiApiKey">Gemini API Key (optional)</label>
+          <input type="password" id="geminiApiKey" class="form-input" placeholder="AIzaSy...">
+        </div>
+        <div class="modal-buttons">
+          <button class="btn btn-outline" id="btn-clear-key">Clear Key</button>
+          <button class="btn btn-primary" id="btn-save-key">Save & Connect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Quick Bar for Mobile Phones -->
+  <div class="mobile-action-bar">
+    <div class="mobile-stats-brief">
+      <strong id="mobileNetSavings">₹23,000 Saved</strong>
+      <small>27% Savings Rate</small>
+    </div>
+    <button class="mobile-btn-quick" onclick="document.getElementById('advisor-section').scrollIntoView({behavior: 'smooth'})">
+      ⚡ Recalculate
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-copy">
+        FinVise AI • AI Personal Finance Advisor • Made for India
+      </div>
+      <div class="footer-disclaimer">
+        Disclaimer: FinVise AI is an educational financial analysis tool and does not constitute SEBI registered investment advice.
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
