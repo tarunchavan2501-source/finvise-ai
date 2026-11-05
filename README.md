@@ -46,3 +46,5 @@ The entire platform runs client-side with zero external setup required, while su
    ```
 2. Open `index.html` in any web browser (Chrome, Edge, Safari, Firefox).
 3. Access the live hosted site anytime at: **[https://quiet-stardust-eacb3c.netlify.app](https://quiet-stardust-eacb3c.netlify.app)**
+4. Also can bee accessd from :https://chipper-toffee-138b1c.netlify.app/
+link and access the task
