@@ -1,6 +1,7 @@
 # FinVise AI - Personal Finance Advisor (Made for India)
 
-> **Live Website Link**: [https://quiet-stardust-eacb3c.netlify.app](https://quiet-stardust-eacb3c.netlify.app)  
+> **Live Website Link**: [https://quiet-stardust-eacb3c.netlify.app](https://quiet-stardust-eacb3c.netlify.app)
+> updated link :https://chipper-toffee-138b1c.netlify.app/
 > **Platform**: Web (Fully compatible with Mobile Phones, Tablets & Laptops)  
 > **Target Audience**: Salaried Professionals, College Students, Freelancers, and Household Managers in India.
 
